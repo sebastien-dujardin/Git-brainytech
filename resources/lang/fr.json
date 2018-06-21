@@ -1,0 +1,26 @@
+{
+    "Name": "Nom",
+    "Firstname": "Prénom",
+    "Profile": "Profil",
+    "Login": "Connexion",
+    "Logout": "Déconnexion",
+    "Password": "Mot de passe",
+    "Confirm Password": "Confirmer Mot de Passe",
+    "Forgot Your Password?": "Mot de passe oublié ?",
+    "Register": "M'inscrire",
+    "Remember Me": "Se souvenir de moi",
+    "Reset Password": "Réinitialiser le mot de passe",
+    "E-Mail Address": "Adresse e-mail",
+    "Send Password Reset Link": "Réinitialiser le mot de passe",
+    "Browse": "Parcourir...",
+    "Posts current": "Articles en cours",
+    "Create posts": "Créer un journal",
+    "Home": "Accueil",
+    "Change Password": "Changer le mot de passe",
+    "Change password": "Changer le mot de passe",
+    "Current Password": "Mot de passe actuel",
+    "New Password": "Nouveau mot de passe",
+    "Confirm New Password": "Confirmer le nouveau mot de passe",
+    "new-password": "nouveau mot de passe"
+
+}
