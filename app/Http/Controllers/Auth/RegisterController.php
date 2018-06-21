@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\VerifyUser;
 use App\Mail\VerifyMail;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
@@ -82,7 +82,7 @@ class RegisterController extends Controller
     
     public function verifyUser($token){ 
         $verifyUser = VerifyUser::where('token', $token)->first(); 
-        if(isset($verifyUser)){ 
+        if(isset($verifyUser) ){
             $user = $verifyUser->user; 
             if(!$user->verified){ 
                 $verifyUser->user->verified = 1; 
