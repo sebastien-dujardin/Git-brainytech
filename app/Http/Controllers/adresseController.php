@@ -1,21 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\User;
-use App\User as Users;
-use App\VerifyUser;
-use App\Mail\VerifyMail;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+class adresseController extends Controller
 {
-    /*
+      /*
     |--------------------------------------------------------------------------
     | Register Controller
     |--------------------------------------------------------------------------
@@ -52,7 +43,7 @@ class RegisterController extends Controller
     */
     protected function validator(array $data){
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'infos_adresse' => 'required|string|max:255',
             'infos_prenom' => 'required|string|max:255',
             'infos_numero_tel' => 'required|max:15',
             //'infos_genre' => 'required',
