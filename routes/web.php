@@ -21,7 +21,7 @@ Route::get('/utilisateur', 'userController@profil')->middleware('auth')->name('p
 //Modification profil
 Route::post('/modificationprofil', 'userController@modif')->middleware('auth')->name('modif');
 // Activation compte par mail
-Route::get('/user/verify/{token}', 'Auth\RegisterContoller@verifyUser');
+Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 // affiche vue changement mdp
 Route::get('/changePassword', 'HomeController@showChangePasswordFrom');
 // valide changement mdp

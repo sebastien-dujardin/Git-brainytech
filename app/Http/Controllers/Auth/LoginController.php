@@ -38,11 +38,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function autenticated(Request $request, $user){
+    public function authenticated(Request $request, $user){
         if(!$user->verified){
             auth()->logout();
             return back()->with('warning', 'Vous devez vérifier votre compte. Nous avons envoyé un code d\'activation, veuillez vérifier vos e-mails (y compris un éventuel dossier spam).');
         }
-        return redirect()->intended($this->redirect>Path());
+        return redirect()->intended($this->redirectPath());
     }
 }
