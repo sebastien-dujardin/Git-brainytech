@@ -21,7 +21,8 @@ Auth::routes();
 
 //Routes Utilisateur
 
-
+//Inscription bis formulaire 2
+Route::post('/utilisateur', 'RegisterContoller@postadresse')->middleware('auth')->name('modif');
 //Connexion au profil
 Route::get('/utilisateur', 'userController@profil')->middleware('auth')->name('profil');
 //Modification profil

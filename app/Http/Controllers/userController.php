@@ -21,16 +21,14 @@ class usersController extends Controller
         
         $id = Auth::User()->iduser;
                 $validedata = $donnees->validate([
-                    'infos_numero_tel_2' => 'required|number_format|max:15',
-                    '' => 'required|confirmed']);
+                    'infos_numero_tel_2' => 'required|number_format|max:15']);
         $password = Hash::make($donnees['password']);
    
-        User::where('idusers', $id)->update(
-        	'infos_numero_tel_2' => $donnees['infos_numero_tel_2'], 
-       
+        User::where('id', $id)->update([
+        	'infos_numero_tel_2' => ($donnees['infos_numero_tel_2'])
+        ]);
 
-]);
-        return view('modifprofil');->with('message', 'Votre profil a été modifié avec succès');
+        return view('modifprofil')->with('message', 'Votre profil a été modifié avec succès');
 
     }
 }

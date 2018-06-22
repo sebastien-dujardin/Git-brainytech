@@ -52,7 +52,7 @@
                                 @endforeach
                                     </div>
                                 </div><!-- /.row -->
-                         </div> --}}
+                        </div> --}}
 
 
                             <div class="form-group row">
@@ -69,19 +69,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="infos_numero_tel_2" class="col-md-4 col-form-label text-md-right">{{ __('Numéro de téléphone (facultatif)') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="infos_numero_tel_2" type="text" class="form-control{{ $errors->has('infos_numero_tel_2') ? ' is-invalid' : '' }}" name="infos_numero_tel_2" value="{{ old('infos_numero_tel_2') }}"  autofocus>
-
-                                    @if ($errors->has('infos_numero_tel_2'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('infos_numero_tel_2') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
 
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
@@ -100,76 +87,66 @@
 
 
 
+                            <div class="form-group row">
+                                <label for="infos_adresse" class="col-md-4 col-form-label text-md-right">{{ __('Adresse') }}</label>
 
+                                <div class="col-md-6">
+                                    <input id="infos_adresse" type="infos_adresse" class="form-control{{ $errors->has('infos_adresse') ? ' is-invalid' : '' }}" name="infos_adresse" value="{{ old('infos_adresse') }}">
 
-
-
-                            <div class="plus">
-
-                                 <div class="form-group row">
-                                    <label for="infos_adresse" class="col-md-4 col-form-label text-md-right">{{ __('Adresse') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="infos_adresse" type="infos_adresse" class="form-control{{ $errors->has('infos_adresse') ? ' is-invalid' : '' }}" name="infos_adresse" value="{{ old('infos_adresse') }}">
-
-                                        @if ($errors->has('infos_adresse'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('infos_adresse') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
+                                    @if ($errors->has('infos_adresse'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('infos_adresse') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
-
-                                <div class="form-group row">
-                                    <label for="infos_complement_adresse" class="col-md-4 col-form-label text-md-right">{{ __('Infos adresse supplémentaires') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="infos_complement_adresse" type="infos_complement_adresse" class="form-control{{ $errors->has('infos_complement_adresse') ? ' is-invalid' : '' }}" name="infos_complement_adresse" value="{{ old('infos_complement_adresse') }}">
-
-                                        @if ($errors->has('infos_complement_adresse'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('infos_complement_adresse') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="infos_code_postal" class="col-md-4 col-form-label text-md-right">{{ __('Code Postal') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="infos_code_postal" type="infos_code_postal" class="form-control{{ $errors->has('infos_code_postal') ? ' is-invalid' : '' }}" name="infos_code_postal" value="{{ old('infos_code_postal') }}" required>
-
-                                        @if ($errors->has('infos_code_postal'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('infos_code_postal') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="infos_ville" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="infos_ville" type="infos_ville" class="form-control{{ $errors->has('infos_ville') ? ' is-invalid' : '' }}" name="infos_ville" value="{{ old('infos_ville') }}" required>
-
-                                        @if ($errors->has('infos_ville'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('infos_ville') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
-                                </div>
-
-
-
-
-
-
-
+                            </div>
 
                             <div class="form-group row">
+                                <label for="infos_complement_adresse" class="col-md-4 col-form-label text-md-right">{{ __('Infos adresse supplémentaires') }}</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="infos_complement_adresse" type="infos_complement_adresse" class="form-control{{ $errors->has('infos_complement_adresse') ? ' is-invalid' : '' }}" name="infos_complement_adresse" value="{{ old('infos_complement_adresse') }}"></textarea>
+
+                                    @if ($errors->has('infos_complement_adresse'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('infos_complement_adresse') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="infos_code_postal" class="col-md-4 col-form-label text-md-right">{{ __('Code Postal') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="infos_code_postal" type="infos_code_postal" class="form-control{{ $errors->has('infos_code_postal') ? ' is-invalid' : '' }}" name="infos_code_postal" value="{{ old('infos_code_postal') }}" required>
+
+                                    @if ($errors->has('infos_code_postal'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('infos_code_postal') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="infos_ville" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="infos_ville" type="infos_ville" class="form-control{{ $errors->has('infos_ville') ? ' is-invalid' : '' }}" name="infos_ville" value="{{ old('infos_ville') }}" required>
+
+                                    @if ($errors->has('infos_ville'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('infos_ville') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+
+
+
+                           <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
@@ -204,4 +181,4 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection
