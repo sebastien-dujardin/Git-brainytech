@@ -29,23 +29,38 @@
 			<form method="post" action="{{route('modificationprofil')}}" enctype="miltipart/form-data">
 				{{ csrf_field() }}
 				<div class="row">
-					{{-- Nom --}}
+					{{-- telephone --}}
 					<div class="col-4 mb-2 text-right">
-						<label for="tel2" class="form-label">
-							Telephone facultatif
+						<label for="tel" class="form-label">
+							Telephone 
 						</label>
 					</div>
 					<div class="col-8 mb-2">
-						<input class="form-control{{ $errors->has('infos_tel_2') ? ' is-invalid' : '' }}" type="text" name="tel2" id="tel2" value="{{ Auth::user()->infos_tel_2 }}" required>
+						<input class="form-control{{ $errors->has('infos_numero_tel') ? ' is-invalid' : '' }}" type="text" name="tel" id="tel" value="{{ Auth::user()->infos_numero_tel }}" required>
 						@if($errors->has('titre'))
 						<span class="invalid-feedback">
 							<strong>
-								{{ $errors->first('infos_tel_2') }}
+								{{ $errors->first('infos_numero_tel') }}
 							</strong>
 						</span>
 						@endif
 					</div>
-					{{-- Prénom --}}
+					<div class="col-4 mb-2 text-right">
+						<label for="adresse" class="form-label">
+							Adresse
+						</label>
+					</div>
+					<div class="col-8 mb-2">
+						<input class="form-control{{ $errors->has('infos_adresse') ? ' is-invalid' : '' }}" type="text" name="adresse" id="adresse" value="{{ Adresse()->infos_adresse}}" required>
+						@if($errors->has('titre'))
+						<span class="invalid-feedback">
+							<strong>
+								{{ $errors->first('infos_adresse') }}
+							</strong>
+						</span>
+						@endif
+					</div>
+					{{-- code postal --}}
 					<div class="col-4 mb-2 text-right">
 						<label for="codepostal" class="form-label">
 							Code postal
@@ -57,6 +72,21 @@
 						<span class="invalid-feedback">
 							<strong>
 								{{ $errors->first('infos_code_postal') }}
+							</strong>
+						</span>
+						@endif
+					</div>
+						<div class="col-4 mb-2 text-right">
+						<label for="ville" class="form-label">
+							Ville
+						</label>
+					</div>
+					<div class="col-8 mb-2">
+						<input class="form-control{{ $errors->has('infos_ville') ? ' is-invalid' : '' }}" type="text" name="ville" id="codepostal" value="{{ Adresse()->infos_ville}}" required>
+						@if($errors->has('titre'))
+						<span class="invalid-feedback">
+							<strong>
+								{{ $errors->first('infos_ville') }}
 							</strong>
 						</span>
 						@endif
