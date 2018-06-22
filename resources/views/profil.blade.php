@@ -19,7 +19,6 @@
 
 			<p>
 				Téléphone facultatif: {{ Auth::user()->infos_tel_2 }} 
-			{{-- }}	<a href=" {{ route('modificationprofil')  }} ">Modifier</a> --}}
 			</p>
 			<p>
 				@foreach ( $adresse as $adr)
@@ -27,7 +26,7 @@
 			</p>
 			<p> Ville : {{ $adr->infos_ville }} 
 			</p>
-			<p> Code postal : {{  $adr->infos_code_postal    }} <a href="{{-- {{route('/modificationprofil')}} --}}">Modifier</a>
+			<p> Code postal : {{  $adr->infos_code_postal    }} 
 			</p>
 			@endforeach
 			<p>
@@ -49,9 +48,10 @@
 			<p>
 				Points de fidélité : {{  Auth::user()->infos_nbre_crédits  }}
 			</p>
+			<a href="{{route('modif')}}" type="button" class="btn btn-primary">
+				Modifier mon profil
+			</a>
 		</div>
-
-
 	</section>
 </main>
 @endsection

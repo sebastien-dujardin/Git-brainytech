@@ -26,7 +26,7 @@
 				Profil de : {{ Auth::user()->name }} {{ Auth::user()->infos_prenom }}
 			</h2>
 			<hr>
-			<form method="post" action="{{route('modificationprofil')}}" enctype="miltipart/form-data">
+			<form method="post" action="{{route('postmodif')}}">
 				{{ csrf_field() }}
 				<div class="row">
 					{{-- telephone --}}
@@ -35,12 +35,13 @@
 							Telephone 
 						</label>
 					</div>
+					<input type="hidden" name="idadress" value="{{$idadresse}}">
 					<div class="col-8 mb-2">
-						<input class="form-control{{ $errors->has('infos_numero_tel') ? ' is-invalid' : '' }}" type="text" name="tel" id="tel" value="{{ Auth::user()->infos_numero_tel }}" required>
+						<input class="form-control{{ $errors->has('tel') ? ' is-invalid' : '' }}" type="text" name="tel" id="tel" value="{{ Auth::user()->infos_numero_tel }}" required>
 						@if($errors->has('titre'))
 						<span class="invalid-feedback">
 							<strong>
-								{{ $errors->first('infos_numero_tel') }}
+								{{ $errors->first('tel') }}
 							</strong>
 						</span>
 						@endif
@@ -51,11 +52,11 @@
 						</label>
 					</div>
 					<div class="col-8 mb-2">
-						<input class="form-control{{ $errors->has('infos_adresse') ? ' is-invalid' : '' }}" type="text" name="adresse" id="adresse" value="{{ Adresse()->infos_adresse}}" required>
+						<input class="form-control{{ $errors->has('adresse') ? ' is-invalid' : '' }}" type="text" name="adresse" id="adresse" value="{{$coordonnes}}" required>
 						@if($errors->has('titre'))
 						<span class="invalid-feedback">
 							<strong>
-								{{ $errors->first('infos_adresse') }}
+								{{ $errors->first('adresse') }}
 							</strong>
 						</span>
 						@endif
@@ -67,11 +68,11 @@
 						</label>
 					</div>
 					<div class="col-8 mb-2">
-						<input class="form-control{{ $errors->has('infos_code_postal') ? ' is-invalid' : '' }}" type="text" name="codepostal" id="codepostal" value="{{ Adresse()->infos_code_postal}}" required>
+						<input class="form-control{{ $errors->has('codepostal') ? ' is-invalid' : '' }}" type="text" name="codepostal" id="codepostal" value="{{$code}}" required>
 						@if($errors->has('titre'))
 						<span class="invalid-feedback">
 							<strong>
-								{{ $errors->first('infos_code_postal') }}
+								{{ $errors->first('codepostal') }}
 							</strong>
 						</span>
 						@endif
@@ -82,11 +83,11 @@
 						</label>
 					</div>
 					<div class="col-8 mb-2">
-						<input class="form-control{{ $errors->has('infos_ville') ? ' is-invalid' : '' }}" type="text" name="ville" id="codepostal" value="{{ Adresse()->infos_ville}}" required>
+						<input class="form-control{{ $errors->has('ville') ? ' is-invalid' : '' }}" type="text" name="ville" id="codepostal" value="{{$city}}" required>
 						@if($errors->has('titre'))
 						<span class="invalid-feedback">
 							<strong>
-								{{ $errors->first('infos_ville') }}
+								{{ $errors->first('ville') }}
 							</strong>
 						</span>
 						@endif
@@ -98,7 +99,7 @@
 						<button type="submit" class="btn btn-primary">
 							valider
 						</button>
-						<a href="{{route('utilisateur')}}" type="button" class="btn btn-secondary">
+						<a href="{{route('modif')}}" type="button" class="btn btn-secondary">
 							Annuler
 						</a>
 					</div>

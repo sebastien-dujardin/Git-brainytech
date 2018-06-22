@@ -25,7 +25,9 @@ Auth::routes();
 //Connexion au profil
 Route::get('/utilisateur', 'userController@profil')->middleware('auth')->name('profil');
 //Modification profil
-Route::post('/modificationprofil', 'userController@modif')->middleware('auth')->name('modif');
+Route::get('/modifprofil', 'userController@modif')->middleware('auth')->name('modif');
+Route::post('/postmodifprofil', 'userController@postmodif' )->middleware('auth')->name('postmodif');             
+
 // Activation compte par mail
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 // affiche vue changement mdp
