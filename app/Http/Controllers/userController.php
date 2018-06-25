@@ -11,10 +11,18 @@ use Auth;
 class userController extends Controller
 {
     public function profil(){
-    	$adresse = Adresse::get();  
-		 return view('profil', ['adresse' => $adresse]);
+ /*   	$adr = Adresse::where('users_id', Auth::user()->id);
+
+		 return view('profil', ['adr' => $adr]);*/
+		 $idadresse = Adresse::where('users_id', Auth::user()->id)->value('infos_id_Adresse');
+		$coordonnes = Adresse::where('users_id', Auth::user()->id)->value('infos_adresse');
+		$code = Adresse::where('users_id', Auth::user()->id)->value('infos_code_postal');
+		$city = Adresse::where('users_id', Auth::user()->id)->value('infos_ville');
+		return view('profil', compact('coordonnes', 'code', 'city', 'idadresse')  );
 	}
-    
+
+
+
 	public function modif(){
 		$idadresse = Adresse::where('users_id', Auth::user()->id)->value('infos_id_Adresse');
 		$coordonnes = Adresse::where('users_id', Auth::user()->id)->value('infos_adresse');

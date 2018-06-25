@@ -16,17 +16,13 @@
 			</p>
 
 			<p>
-				Téléphone facultatif: {{ Auth::user()->infos_tel_2 }} 
+				Adresse : {{  $coordonnes }} 
 			</p>
-			<p>
-				@foreach ( $adresse as $adr)
-				Adresse : {{  $adr->infos_adresse }} 
+			<p> Ville : {{ $city }} 
 			</p>
-			<p> Ville : {{ $adr->infos_ville }} 
+			<p> Code postal : {{ $code }} 
 			</p>
-			<p> Code postal : {{  $adr->infos_code_postal    }} 
-			</p>
-			@endforeach
+
 			<p>
 				Email : {{  Auth::user()->email   }}
 			</p>
