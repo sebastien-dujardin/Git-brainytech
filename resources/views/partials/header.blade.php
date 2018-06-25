@@ -15,12 +15,12 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.min.css') }}">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light  bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
 		<section class="container">
 			{{-- lien sur logo --}}
 			<a class="navbar-brand" href="{{ URL::to('/') }}">
 				{{-- logo --}}
-				<!-- <img src=""> -->
+				<img src="{{ asset('assets/img/images.jpg') }}" style="height: 40px">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -45,7 +45,12 @@
 					</li>
 					
 					@endguest
-					
+					@if(isset(Auth::user()->role) && Auth::user()->role>0)
+					<li class="nav-item{{ (Route::currentRouteName() == 'affichetheme') ? ' active': '' }}">
+						<a class="nav-link" href="{{URL::to('/affiche-theme')}}">
+							{{ __('Create posts')}}
+						</a>
+					@endif
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<!-- Authentication Links -->
@@ -96,5 +101,3 @@
 			</div>
 		</section>
 	</nav>
-
-

@@ -2,5 +2,5 @@
 
 @yield('contenu')
 
-</body>
+	</body>
 </html>

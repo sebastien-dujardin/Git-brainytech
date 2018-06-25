@@ -3,3 +3,4 @@
 @yield('contenu')
 
 @include('partials.footer')
+

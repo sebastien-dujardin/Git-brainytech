@@ -21,7 +21,8 @@ Auth::routes();
 
 //Routes Utilisateur
 
-
+//Inscription bis formulaire 2
+Route::post('/utilisateur', 'RegisterContoller@postadresse')->middleware('auth')->name('modif');
 //Connexion au profil
 Route::get('/utilisateur', 'userController@profil')->middleware('auth')->name('profil');
 //Modification profil
@@ -52,19 +53,8 @@ Route::get('/cookies', 'footercontroller@cookies')->name('cookies');
 Route::get('/assurance', 'footercontroller@assurance')->name('assurance');
 Route::get('/conseil', 'footercontroller@conseil')->name('conseil');
 
-// Route Admin
-Route::prefix('admin')->group(function() {
-// Route accueil admin 
-	Route::get('/', 'adminController@accueil')->middleware('auth')->name('admin');
-	Route::get('/', 'adminController@devis')->middleware('auth')->name('devis');
-	Route::get('/', 'adminController@postdevis')->middleware('auth')->name('postdevis');
-});
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-

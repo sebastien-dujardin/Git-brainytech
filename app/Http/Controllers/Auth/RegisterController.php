@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\adresseModel;
 use App\VerifyUser;
 use App\Mail\VerifyMail;
 use Illuminate\Support\Facades\Hash;
@@ -52,8 +53,16 @@ class RegisterController extends Controller
     protected function validator(array $data){
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'infos_prenom' => 'required|string|max:255',
+            'infos_numero_tel' => 'required|string|max:11',
+            //'infos_genre' => 'required',
+            'email' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:6',
+            'infos_adresse' => 'required|string|max:255',
+            'infos_complement_adresse' => 'string|max:255',
+            'infos_code_postal' => 'required|numeric|max:99999',
+            'infos_ville' => 'string|max:255',
+            'password' => 'required|string|min:6',
         ]);
     }
     
@@ -66,18 +75,31 @@ class RegisterController extends Controller
     protected function create(array $data){
         $user = User::create([
             'name' => $data['name'],
+            'infos_prenom' => $data['infos_prenom'],
+            'infos_numero_tel' => $data['infos_numero_tel'],
             'email' => $data['email'],
+            //'infos_genre' => $data['infos_genre'],
             'password' => Hash::make($data['password']),
+
+
         ]);
+
+        $adresse = adresseModel::create(['infos_adresse' => $data['infos_adresse'],
+            'infos_complement_adresse' => $data['infos_complement_adresse'],
+            'infos_code_postal' => $data['infos_code_postal'],
+            'infos_ville' => $data['infos_ville'],
+            'users_id' => $user->id,
+        ]);
+
+
         
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
             'token' => str_random(40)
         ]);
+        return $user;
         
         Mail::to($user->email)->send(new VerifyMail($user));
-        
-        return $user;
     }
     
     public function verifyUser($token){ 
