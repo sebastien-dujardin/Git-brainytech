@@ -18,9 +18,9 @@
 			<p>
 				Adresse : {{  $coordonnes }} 
 			</p>
-			<p> Ville : {{ $city }} 
-			</p>
 			<p> Code postal : {{ $code }} 
+			</p>
+			<p> Ville : {{ $city }} 
 			</p>
 
 			<p>
