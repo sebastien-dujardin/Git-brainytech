@@ -8,9 +8,9 @@
                 <div class="card-header">{{ __('Register') }}</div> 
 
 
-                     <div class="plus">
+                    <div class="plus">
 
-                                 <div class="form-group row">
+                                <div class="form-group row">
                                     <label for="infos_adresse" class="col-md-4 col-form-label text-md-right">{{ __('Adresse') }}</label>
 
                                     <div class="col-md-6">

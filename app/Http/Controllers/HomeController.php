@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -25,4 +28,32 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    // affiche le formulaire changement mdp
+    public function showChangePasswordFrom(){
+        return view('auth.changepassword');
+    }
+
+    // Valide changement mdp
+    public function changePassword(Request $request){
+        if(!(Hash::check($request->get('current-password'), Auth::user()->password))){
+            // The password matches
+            return redirect()->back()->with("error","Votre mot de passe actuel ne correspond pas au mot de passe que vous avez fourni. Veuillez réessayer.");
+        } 
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+            //Current password and new password are same
+            return redirect()->back()->with("error","Nouveau mot de passe ne peut pas être le même que votre mot de passe actuel. Veuillez choisir un mot de passe différent.");
+        } 
+        $validateData =$request->validate([
+            'current-password' => 'required',
+            'new-password' => 'required|string|min:6|confirmed',
+        ]); 
+        //Change Password
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('new-password'));
+        $user->save();
+        return redirect()->back()->with("success","Le mot de passe a été changé avec succès !"); 
+    }
+
+
 }
