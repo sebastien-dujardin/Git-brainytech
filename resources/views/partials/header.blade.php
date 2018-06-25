@@ -63,7 +63,7 @@
 						</a>
 					</li>
 					@else
-					@if(Auth::user()->role==4)
+					@if(Auth::user()->role == 4)
 					{{-- lien admin si role 4 --}}
 					<li class="nav-item{{ (Route::getCurrentRoute()->getPrefix() == '/admin') ? ' active': ''}}">
 						<a class='nav-link' href="{{ route('admin')}}">
