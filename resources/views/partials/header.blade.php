@@ -20,7 +20,7 @@
 			{{-- lien sur logo --}}
 			<a class="navbar-brand" href="{{ URL::to('/') }}">
 				{{-- logo --}}
-				<img src="{{ asset('assets/img/images.jpg') }}" style="height: 40px">
+
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -87,6 +87,10 @@
 							<a class="dropdown-item" href="{{ route('profil') }}">
 								{{ __('Profil') }}
 							</a>
+							{{--  lien changement password  --}}
+							<a class="dropdown-item" href="/changePassword">
+           						 {{ __('Change Password') }}
+        					</a>
 							{{-- lien logout --}}
 							<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 								{{ __('Déconnexion') }}

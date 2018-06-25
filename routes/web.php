@@ -17,12 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 //Routes 
 
 //Routes Utilisateur
 
 //Inscription bis formulaire 2
 Route::post('/utilisateur', 'RegisterContoller@postadresse')->middleware('auth')->name('modif');
+
 //Connexion au profil
 Route::get('/utilisateur', 'userController@profil')->middleware('auth')->name('profil');
 //Modification profil
@@ -34,6 +36,7 @@ Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 // affiche vue changement mdp
 Route::get('/changePassword', 'HomeController@showChangePasswordFrom');
 // valide changement mdp
+
 Route::post('changePassword', 'HomeController@changePassword')->name('changePassword');
 
 //Route footer 
@@ -55,6 +58,6 @@ Route::get('/conseil', 'footercontroller@conseil')->name('conseil');
 
 
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();

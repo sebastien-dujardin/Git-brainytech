@@ -1,6 +1,7 @@
 @extends('layouts.mainlayout')
 @section('title', 'Profil')
 @section('contenu')
+
 <main class="container">
 	<section class="row">
 		<div class="col mt-5">
