@@ -33,111 +33,70 @@
             <form method="post" action="{{route('modificationdevis') }}">
                 {{ csrf_field() }}
                 <input id="id_mairie" type="hidden" value="{{$devis->id}}" name="id_devis">
-                {{--  champmairie  --}}
+                {{--  description devis --}}
                 <div class="form-group row">
-                    <label for="mairie" class="col-md-3 col-form-label text-md-right">
-                        Mairie
+                    <label for="devis" class="col-md-3 col-form-label text-md-right">
+                        Description
                     </label>
                     <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('mairie') ? ' is-invalid' : '' }}" type="text" name="mairie" id="mairie" value="{{$afficheinfomairie->mairie}}" required>
-                        @if($errors->has('mairie'))
+                        <input class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" type="text" name="description" id="description" value="{{$devis->description}}" required>
+                        @if($errors->has('description'))
                         <span class="invalid-feedback">
                             <strong>
-                                {{ $errors->first('mairie') }}
+                                {{ $errors->first('description') }}
                             </strong>
                         </span>
                         @endif
                     </div>
                 </div>
-                {{-- champ adresse --}}
+                {{-- champ quantité devis --}}
                 <div class="form-group row"> 
-                    <label for="adresse" class="col-md-3 col-form-label text-md-right" >
-                        Adresse
+                    <label for="quantite" class="col-md-3 col-form-label text-md-right" >
+                        Quantité
                     </label>
                     <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('adresse') ? ' is-invalid' : '' }}" type="text" name="adresse" id="adresse" value="{{$afficheinfomairie->adresse}}" required>
-                        @if($errors->has('adresse'))
+                        <input class="form-control{{ $errors->has('qte') ? ' is-invalid' : '' }}" type="text" name="qte" id="qte" value="{{$devis->quantite}}" required>
+                        @if($errors->has('qte'))
                         <span class="invalid-feedback">
                             <strong>
-                                {{ $errors->first('adresse') }}
+                                {{ $errors->first('qte') }}
                             </strong>
                         </span>
                         @endif
                     </div>
                 </div>
-                {{--  codepostal  --}}
+                {{--  montant devis  --}}
                 <div class="form-group row">
-                    <label for="code_postal" class="col-md-3 col-form-label text-md-right">
-                        Code postal
+                    <label for="montant" class="col-md-3 col-form-label text-md-right">
+                        Montant
                     </label>
                     <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('code_postal') ? ' is-invalid' : '' }}" type="text" name="code_postal" id="code_postal" value="{{$afficheinfomairie->code_postal}}" required>
-                        @if($errors->has('code_postal'))
+                        <input class="form-control{{ $errors->has('tarif') ? ' is-invalid' : '' }}" type="text" name="tarif" id="tarif" value="{{$devis->infos_montant_devis}}" required>
+                        @if($errors->has('tarif'))
                         <span class="invalid-feedback">
                             <strong>
-                                {{ $errors->first('code_postal') }}
+                                {{ $errors->first('tarif') }}
                             </strong>
                         </span>
                         @endif
                     </div>
                 </div>
-                {{-- champ ville --}}
+                {{-- champ statut --}}
                 <div class="form-group row">
-                    <label for="ville" class="col-md-3 col-form-label text-md-right">
-                        Ville
+                    <label for="statut" class="col-md-3 col-form-label text-md-right">
+                        Statut
                     </label>
                     <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('ville') ? ' is-invalid' : '' }}" type="text" name="ville"  value="{{$afficheinfomairie->ville}}" required>
-                        @if($errors->has('ville'))
+                        <input class="form-control{{ $errors->has('statut') ? ' is-invalid' : '' }}" type="text" name="statut"  value="{{$devis->infos_statut_devis}}" required>
+                        @if($errors->has('statut'))
                         <span class="invalid-feedback">
                             <strong>
-                                {{ $errors->first('ville') }}
+                                {{ $errors->first('statut') }}
                             </strong>
                         </span>
                         @endif
                     </div>
-                </div>
-                {{-- champ telephone --}}
-                <div class="form-group row">
-                    <label for="telephone" class="col-md-3 col-form-label text-md-right">
-                        Téléphone
-                    </label>
-                    <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('telephone') ? ' is-invalid' : '' }}" type="phone" name="telephone" id="telephone" value="{{$afficheinfomairie->telephone}}" required>
-                        @if($errors->has('telephone'))
-                        <span class="invalid-feedback">
-                            <strong>
-                                {{ $errors->first('telephone') }}
-                            </strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                {{-- champ email --}}
-                <div class="form-group row">
-                    <label for="email_mairie" class="col-md-3 col-form-label text-md-right">
-                        Email
-                    </label>
-                    <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('email_mairie') ? ' is-invalid' : '' }}" type="email" name="email_mairie" id="email_mairie" value="{{$afficheinfomairie->email_mairie}}" required>
-                        @if($errors->has('email_mairie'))
-                        <span class="invalid-feedback">
-                            <strong>
-                                {{ $errors->first('email_mairie') }}
-                            </strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                {{-- champ site --}}
-                <div class="form-group row">
-                    <label for="site" class="col-md-3 col-form-label text-md-right">
-                        Site
-                    </label>
-                    <div class="col-md-8">
-                        <input class="form-control" type="text" name="site" id="site" value="{{$afficheinfomairie->site}}">
-                    </div>
-                </div>
+                </div>                
                 {{-- bouton modofication --}}
                 <div class="form-group row pb-3">
                     <div class="col-md-6 offset-md-3">                    
