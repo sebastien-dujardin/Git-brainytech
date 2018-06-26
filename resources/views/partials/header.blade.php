@@ -8,7 +8,6 @@
 	<!-- Fichier JS -->
 	<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.js') }}"></script>		
 	<script type="text/javascript" src="{{ asset('assets/js/bootstrap.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/js/scripts.js') }}"></script>
 	<!-- Fichier CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -16,12 +15,12 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.min.css') }}">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-light  bg-light">
 		<section class="container">
 			{{-- lien sur logo --}}
 			<a class="navbar-brand" href="{{ URL::to('/') }}">
 				{{-- logo --}}
-				<img src="{{ asset('assets/img/images.jpg') }}" style="height: 40px">
+				<!-- <img src=""> -->
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -46,12 +45,7 @@
 					</li>
 					
 					@endguest
-					@if(isset(Auth::user()->role) && Auth::user()->role>0)
-					<li class="nav-item{{ (Route::currentRouteName() == 'affichetheme') ? ' active': '' }}">
-						<a class="nav-link" href="{{URL::to('/affiche-theme')}}">
-							{{ __('Create posts')}}
-						</a>
-					@endif
+					
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<!-- Authentication Links -->
