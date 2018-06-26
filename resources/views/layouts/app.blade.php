@@ -60,7 +60,14 @@
                                 </a>
                             </li>
                         @else
-
+                        @if(Auth::user()->role == 4)
+                    {{-- lien admin si role 4 --}}
+                    <li class="nav-item{{ (Route::getCurrentRoute()->getPrefix() == '/admin') ? ' active': ''}}">
+                        <a class='nav-link' href="{{ route('admin')}}">
+                            {{ __('Admin') }}
+                        </a>
+                    </li>
+                    @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
