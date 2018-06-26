@@ -34,6 +34,7 @@ Route::get('/changePassword', 'HomeController@showChangePasswordFrom');
 // valide changement mdp
 Route::post('changePassword', 'HomeController@changePassword')->name('changePassword');
 
+
 //Route footer 
 Route::get('/vieprivee', 'footercontroller@vieprivee')->name('vieprivee');
 Route::get('/mentionslegales', 'footercontroller@mentionslegales')->name('mentionslegales');
