@@ -63,11 +63,14 @@ public function accueil(){
 
     	public function listedevis(){ 
 		if(Auth::user()->role ==4){
-			$listedevis = Mairie::get();
-			$listedevis = Mairie::paginate(5);       	
-			return view('admin.listedevis', ['listedevis' => $listdevis]);
+			$listedevis = Devis::get();
+			$listeusers = User::get();
+			$listedevis = Devis::paginate(10);       	
+			return view('admin.listedevis', ['listedevis' => $listedevis, 'listeusers' => $listeusers]);
 		}else{
 			return abort('404');
 		}
 	}
-}
+ }
+
+
