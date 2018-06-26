@@ -58,6 +58,10 @@ Route::prefix('admin')->group(function() {
 	Route::get('/', 'adminController@accueil')->middleware('auth')->name('admin');
 	Route::get('devis', 'adminController@devis')->middleware('auth')->name('devis');
 	Route::post('/postdevis', 'adminController@postdevis')->middleware('auth')->name('postdevis');
+	Route::get('/listedevis', 'adminController@listedevis')->middleware('auth')->name('listedevis');
+	Route::post('/modificationdevis', 'adminController@modificationdevis')->middleware('auth')->name('modificationdevis');
+	Route::post('/devisupprime', 'adminController@devisupprime')->middleware('auth')->name('devisupprime');
+	
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

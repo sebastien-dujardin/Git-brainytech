@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-1">
                     <strong>
-                       Total/Acompte
+                      Montant Regler
                     </strong>
                 </div>              
                 <div class="col-md-3">
@@ -61,7 +61,7 @@
                 </div>
                 <hr class="col-12">
             </div>              
-            @foreach($listemairie as $mairie)
+            @foreach($listedevis as $devis)
             <div class="row py-1">
                 {{-- date du devis --}}
                 <div class="col-md-3">
@@ -77,11 +77,11 @@
                 </div>
                 {{-- ville --}}
                 <div class="col-md-3">
-                    {{ $devis->ville }}
+                    {{ $devis->id_users }}
                 </div>
                 {{-- utilisateur --}}
                 <div class="col-md-1 text-left">
-                    {{ $devis->nbre  }}
+                    {{ $devis->quantite  }}
                 </div>
                 {{--  action  --}}
                 <div class="col-md-2 text-center">

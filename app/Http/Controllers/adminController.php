@@ -11,7 +11,7 @@ use App\devisModel as Devis;
 
 class adminController extends Controller
 {
-
+//affiche page comptage devis
 public function accueil(){
     	if(Auth::User()->role == 4){
 	        $devis = Devis::count();
@@ -22,7 +22,7 @@ public function accueil(){
     }
 
 
-//affiche page devis
+//affiche page devis select client
 	public function devis(){
 		if(Auth::user()->role ==4 ){
 			$nom = User::get();
@@ -60,4 +60,14 @@ public function accueil(){
 			return abort('404');
 		}
     }   
+
+    	public function listedevis(){ 
+		if(Auth::user()->role ==4){
+			$listedevis = Mairie::get();
+			$listedevis = Mairie::paginate(5);       	
+			return view('admin.listedevis', ['listedevis' => $listdevis]);
+		}else{
+			return abort('404');
+		}
+	}
 }
