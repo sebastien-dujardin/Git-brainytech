@@ -36,7 +36,7 @@
             
                 <div class="row">
                  <div class="col-6">
-                  <select id="client" class="form-control{{ $errors->has('client') ? ' is-invalid' : '' }}" name="client" required>
+                  <select id="client" class="form-control{{ $errors->has('users_id') ? ' is-invalid' : '' }}" name="client" required>
                             {{--  selection des  client --}}
                             
                             <option value="">
@@ -55,7 +55,7 @@
                         @endif
                  </div>		
                  <div class="col-6">
-                 	<p>Date: <input type="text" id="datepicker"></p>
+                 	<p>Date expiration: <input type="text" name="datedevis" id="datepicker"></p>
                  </div>
              	</div>
              	<div class="row">
@@ -64,7 +64,7 @@
 							Description
 						</label>
 						<div class="form-group">
-    					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    					<textarea class="form-control" name="description" id="description" rows="3"></textarea>
   					</div>
              		</div>
              	</div>
@@ -74,11 +74,11 @@
 							Quantité
 						</label>
 						<br>
-						<input class="form-control{{ $errors->has('infos_quantite_produits') ? ' is-invalid' : '' }}" type="text" name="qte" id="qte" value="{{ old('infos_quantite_produits') }}" required>
-                        @if($errors->has('infos_quantite_produits'))
+						<input class="form-control{{ $errors->has('quantité') ? ' is-invalid' : '' }}" type="text" name="qte" id="qte" value="{{ old('quantité') }}" required>
+                        @if($errors->has('quantité'))
                         <span class="invalid-feedback">
                             <strong>
-                                {{ $errors->first('infos_quantite_produits') }}
+                                {{ $errors->first('quantité') }}
                             </strong>
                         </span>
                         @endif
@@ -88,7 +88,7 @@
             				Tarif HT
             			</label>
             			<br>
-            			<input class="form-control{{ $errors->has('infos_montant_devis') ? ' is-invalid' : '' }}" type="text" name="qte" id="qte" value="{{ old('infos_montant_devis') }}" required>
+            			<input class="form-control{{ $errors->has('infos_montant_devis') ? ' is-invalid' : '' }}" type="text" name="tarif" id="tarif" value="{{ old('infos_montant_devis') }}" required>
                         @if($errors->has('infos_montant_devis'))
                         <span class="invalid-feedback">
                             <strong>
@@ -101,13 +101,13 @@
         		<div class="row">
         			<div class="col-md-2"></div>
     				<div class="form-check form-check-inline col-md-2">
-    					<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-    					<label class="form-check-label" for="inlineRadio1">50%</label>
+    					<input class="form-check-input" type="radio" name="reglement" id="reglement" value="1">
+    					<label class="form-check-label" for="reglement">50%</label>
     				</div>
     				<div class="col-md-4"></div>
     				<div class="form-check form-check-inline col-md-2">
-    					<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-    					<label class="form-check-label" for="inlineRadio2">100%</label>
+    					<input class="form-check-input" type="radio" name="reglement" id="reglement" value="2">
+    					<label class="form-check-label" for="reglement">100%</label>
     				</div>
     				<div class="col-md-2"></div>
         		</div>
