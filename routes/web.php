@@ -59,7 +59,8 @@ Route::prefix('admin')->group(function() {
 	Route::get('devis', 'adminController@devis')->middleware('auth')->name('devis');
 	Route::post('/postdevis', 'adminController@postdevis')->middleware('auth')->name('postdevis');
 	Route::get('/listedevis', 'adminController@listedevis')->middleware('auth')->name('listedevis');
-	Route::post('/modificationdevis', 'adminController@modificationdevis')->middleware('auth')->name('modificationdevis');
+	Route::get('/modificationdevis{id}', 'adminController@modificationdevis')->middleware('auth')->name('modificationdevis');
+	Route::post('/modifdevis', 'adminController@modifdevis')->middleware('auth')->name('modifdevis');
 	Route::post('/devisupprime', 'adminController@devisupprime')->middleware('auth')->name('devisupprime');
 	
 });

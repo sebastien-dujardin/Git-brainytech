@@ -30,7 +30,7 @@
         </div>
         <div class="col-12">
             {{-- formulaire --}}            
-            <form method="post" action="{{route('modificationdevis') }}">
+            <form method="post" action="{{route('modifdevis') }}">
                 {{ csrf_field() }}
                 <input id="id_mairie" type="hidden" value="{{$devis->id}}" name="id_devis">
                 {{--  description devis --}}
@@ -97,7 +97,7 @@
                         @endif
                     </div>
                 </div>                
-                {{-- bouton modofication --}}
+                {{-- bouton modification --}}
                 <div class="form-group row pb-3">
                     <div class="col-md-6 offset-md-3">                    
                         <button class="btn btn-primary" type="submit">

@@ -71,6 +71,16 @@ public function accueil(){
 			return abort('404');
 		}
 	}
+
+	// affiche la page modification du devis
+	public function modificationdevis() {
+		if(Auth::user()->role ==4){
+			$listedevis = Devis::get();   	
+			return view('admin.modificationdevis', ['listedevis' => $listedevis]);
+		}else{
+			return abort('404');
+		}
+	}
  }
 
 
