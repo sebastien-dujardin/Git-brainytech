@@ -71,7 +71,7 @@
                                         {{ __('Profil') }}
                                     </a>
                                     {{--  lien changement password  --}}
-                                    <a class="dropdown-item" href="/changePassword">
+                                    <a class="dropdown-item" href="{{ route('changePassword') }}">
                                          {{ __('Change Password') }}
                                     </a>                                    
                                     {{-- lien logout --}}
