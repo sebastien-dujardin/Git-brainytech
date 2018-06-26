@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password','name','infos_prenom','infos_genre','infos_numero_tel','updated_at','created_at','infos_email','infos_nbre_crédits','role','verified'
+        'email', 'password','name','infos_prenom','infos_numero_tel','updated_at','created_at','infos_nbre_crédits','role','verified'
     ];
     protected $primaryKey = 'id';
     public $timestamps = false;

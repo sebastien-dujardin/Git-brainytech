@@ -17,31 +17,29 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
 //Routes 
 
 //Routes Utilisateur
 
 //Inscription bis formulaire 2
 Route::post('/utilisateur', 'RegisterContoller@postadresse')->middleware('auth')->name('modif');
-
 //Connexion au profil
 Route::get('/utilisateur', 'userController@profil')->middleware('auth')->name('profil');
 //Modification profil
-Route::get('/modifprofil', 'userController@modif')->middleware('auth')->name('modif');
-Route::post('/postmodifprofil', 'userController@postmodif' )->middleware('auth')->name('postmodif');             
-
+Route::post('/modificationprofil', 'userController@modif')->middleware('auth')->name('modif');
 // Activation compte par mail
-Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
+Route::get('/user/verify/{token}', 'Auth\RegisterContoller@verifyUser');
 // affiche vue changement mdp
 Route::get('/changePassword', 'HomeController@showChangePasswordFrom');
 // valide changement mdp
-
 Route::post('changePassword', 'HomeController@changePassword')->name('changePassword');
 
 //Route footer 
 Route::get('/mentionslegales', 'footercontroller@mentionslegales')->name('mentionslegales');
+
+Route::get('/Conditions', 'footercontroller@conditions')->name('conditions');
 Route::get('/contact', 'footercontroller@contact')->name('contact');
+Route::get('/quisommesnous', 'footercontroller@quisommesnous')->name('quisommesnous');
 
 
 
@@ -62,7 +60,5 @@ Route::prefix('admin')->group(function() {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 
 
