@@ -12,7 +12,7 @@ class entrepriseModel extends Model
      * @var array
      */
     protected $fillable = [
-        'infos_adresse_entreprise','infos_nom_createur_compte','infos_siret','infos_nom_entreprise','users_id'
+        'infos_adresse_entreprise','infos_siret','infos_nom_entreprise','users_id'
     ];
 
     protected $table = 'infos_entreprise';
