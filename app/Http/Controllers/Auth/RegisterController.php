@@ -65,7 +65,6 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6',
             'infos_siret' => 'nullable|max:14',
             'infos_adresse_entreprise' => 'nullable|max:255',
-            'infos_nom_createur_compte' => 'nullable|max:45',
             'infos_nom_entreprise' => 'nullable|max:45',
 
 
@@ -92,7 +91,7 @@ class RegisterController extends Controller
 
         $adresse = Adresse::create([
             'infos_adresse' => $data['infos_adresse'],
-            'infos_complement_adresse' => $user->id,
+            'infos_complement_adresse' => $data['infos_complement_adresse'],
             'infos_code_postal' => $data['infos_code_postal'],
             'infos_ville' => $data['infos_ville'],
             'users_id' => $user->id,
@@ -104,7 +103,6 @@ class RegisterController extends Controller
             
             $entreprise = Entreprise::create([
             'infos_adresse_entreprise' => $data['infos_adresse_entreprise'],
-            'infos_nom_createur_compte' => $data['infos_nom_createur_compte'],
             'infos_siret' => $data['infos_siret'],
             'infos_nom_entreprise' => $data['infos_nom_entreprise'],
             'users_id' => $user->id,
