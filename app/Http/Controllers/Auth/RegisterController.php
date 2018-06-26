@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'email' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6',
             'infos_adresse' => 'required|string|max:255',
-            'infos_complement_adresse' => 'max:255',
+            'infos_complement_adresse' => 'string|max:255',
             'infos_code_postal' => 'required|numeric|max:99999',
             'infos_ville' => 'string|max:255',
             'password' => 'required|string|min:6',
@@ -97,7 +97,7 @@ class RegisterController extends Controller
             'user_id' => $user->id,
             'token' => str_random(40)
         ]);
-                
+        
         Mail::to($user->email)->send(new VerifyMail($user));
 
         return $user;

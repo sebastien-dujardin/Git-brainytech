@@ -16,7 +16,7 @@ class adresseModel extends Model
      * @var array
      */
     protected $fillable = [
-        'infos_adresse','infos_complement_adresse','infos_code_postal','infos_ville','users_id'
+        'infos_adresse','infos_code_postal','infos_ville','users_id'
     ];
 
     protected $table = 'adresse';

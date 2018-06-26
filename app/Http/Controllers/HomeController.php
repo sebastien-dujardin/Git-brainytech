@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,8 +28,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    // affiche le formulaire changement mdp
+     // affiche le formulaire changement mdp
     public function showChangePasswordFrom(){
         return view('auth.changepassword');
     }
@@ -54,6 +53,5 @@ class HomeController extends Controller
         $user->save();
         return redirect()->back()->with("success","Le mot de passe a été changé avec succès !"); 
     }
-
 
 }

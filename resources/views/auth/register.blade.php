@@ -105,7 +105,7 @@
                                 <label for="infos_complement_adresse" class="col-md-4 col-form-label text-md-right">{{ __('Infos adresse supplémentaires') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="infos_complement_adresse" type="text" class="form-control{{ $errors->has('infos_complement_adresse') ? ' is-invalid' : '' }}" name="infos_complement_adresse" value="{{ old('infos_complement_adresse') }}">
+                                    <textarea id="infos_complement_adresse" type="infos_complement_adresse" class="form-control{{ $errors->has('infos_complement_adresse') ? ' is-invalid' : '' }}" name="infos_complement_adresse" value="{{ old('infos_complement_adresse') }}"></textarea>
 
                                     @if ($errors->has('infos_complement_adresse'))
                                     <span class="invalid-feedback" role="alert">
