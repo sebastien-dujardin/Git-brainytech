@@ -31,5 +31,21 @@ public function accueil(){
 			return abort('404');
 		}
 	}
+
+	  // ajout du devis pour facturation
+
+    public function postdevis(Request $donnees){
+    	if(Auth::user()->role ==4 ){
+    		$validatedData = $donnees->validate([
+				'client' => 'required',
+	 			'codepostal' => 'required',
+	 			'description' => 'required|max:255',
+	 			'qte' => 'required|numeric',
+	 			'tarif' => 'required'
+	 		]);
+    	}else{
+    		return abort('404');
+    	}
+    }
     
 }
