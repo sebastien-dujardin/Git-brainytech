@@ -29,7 +29,7 @@
 				<ul class="navbar-nav mr-auto">
 					@guest
 					{{-- lien Accueil --}}
-					<li class="nav-item{{ (Route::currentRouteName() == 'accueil') ? ' active': '' }}">
+					<li class="nav-item{{ (Route::currentRouteName() == 'home') ? ' active': '' }}">
 						<a class="nav-link" href="{{URL::to('/')}}">
 							{{ __('Home')}}
 							<span class="sr-only">(current)</span>
@@ -38,7 +38,7 @@
 					@else
 					
 					<li class="nav-item{{ (Route::currentRouteName() == 'home') ? ' active': '' }}">
-						<a class="nav-link" href="{{URL::to('/accueil')}}">
+						<a class="nav-link" href="{{URL::to('/home')}}">
 							{{ __('Home')}}
 							<span class="sr-only">(current)</span>
 						</a>

@@ -38,7 +38,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         {{-- lien accueil --}}
-                        <li class="nav-item{{ (Route::currentRouteName() == 'accueil') ? ' active': '' }}">
+                        <li class="nav-item{{ (Route::currentRouteName() == 'home') ? ' active': '' }}">
                             <a class="nav-link" href="{{URL::to('/')}}">
                                 {{ __('Home')}}
                                 <span class="sr-only">(current)</span>
