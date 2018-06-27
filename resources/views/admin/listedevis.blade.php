@@ -78,7 +78,7 @@
             <div class="row py-1">
                 {{-- date du devis --}}
                 <div class="col-md-1">
-                    {{ $devis->infos_date_devis }}
+                    {{ \Carbon\Carbon::parse($devis->infos_date_devis)->format('d/m/Y H:i:s') }}
                 </div>
                 {{-- utilisateur --}}
                 <div class="col-md-2">
