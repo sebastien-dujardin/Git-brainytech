@@ -8,6 +8,7 @@ use App\usersModel as User;
 use App\adresseModel as Adresse;
 use App\devisModel as Devis;
 
+
 use App\factureModel as Factures;
 
 
@@ -15,12 +16,15 @@ use App\factureModel as Factures;
 class adminController extends Controller
 {
 
+
 //affiche page comptage devis
 public function accueil(){
     	if(Auth::User()->role == 4){
 	        $devis = Devis::count();
+
 	        $facture = Factures::count();
 	        return view('admin.accueil',['devis' => $devis, 'facture' => $facture]);
+
 
     	}else{
     		return abort('404');
@@ -29,7 +33,9 @@ public function accueil(){
 
 
 
+
 //affiche page devis select client
+
 
 	public function devis(){
 		if(Auth::user()->role ==4 ){
@@ -57,8 +63,8 @@ public function accueil(){
 			$devis->Adresse_infos_id_Adresse = $idadresse;
 			$date = date_create($donnees['datedevis']);
 
-			$date = date_format($date,'Y-m-d');
 
+			$date = date_format($date,'Y-m-d');
 			$devis->infos_date_expiration = $date;
 			$devis->description = $donnees['description'];
 			$devis->quantite = $donnees['qte'];
@@ -127,6 +133,14 @@ public function accueil(){
 			return abort('404');
 		}
 	}
+
+	 public function jeu(){
+
+	 	$req = $db->query('SELECT * FROM users LIMIT 1');
+	 	$users = $req->fetchObjec();
+	 	var_dump($users);
+	 	return view('jeu');
+	 }
 
 }
 

@@ -150,7 +150,9 @@
             {{-- pagination --}}
             <nav aria-label="Page navigation">
 
+
                 {{ $listedevis->links('vendor.pagination.bootstrap-4') }}
+
 
             </nav>
         </div>
@@ -163,7 +165,9 @@
             <div class="modal-header">
                 <h5 class="modal-title">
 
+
                     Confirmer annulation
+
 
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -173,7 +177,9 @@
             <div class="modal-body">
                 <p>
 
+
                     Voulez-vous vraiment annuler le devis ?
+
 
                 </p>
             </div>
@@ -192,7 +198,9 @@
     $('#confirmModale').on('show.bs.modal', function (event) {
         var id = $(event.relatedTarget).data('id');
 
+
         $(this).find('.modal-body p').html("Voulez-vous vraiment annuler ce devis ?");
+
 
         $("#confirm").attr("href", "{{URL::to('/')}}/admin/devisupprime/"+id);
     });

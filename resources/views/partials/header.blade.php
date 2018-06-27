@@ -83,6 +83,13 @@
 							<a class="dropdown-item" href="{{ route('profil') }}">
 								{{ __('Profil') }}
 							</a>
+
+
+							{{-- lien jeu --}}
+							<a class="dropdown-item" href="{{ route('jeu') }}">
+								{{ __('Jeu') }}
+							</a>
+
 							{{-- lien changement mdp --}}
 							<a class="dropdown-item" href="{{ route('changePassword') }}">
            						 {{ __('Change Password') }}

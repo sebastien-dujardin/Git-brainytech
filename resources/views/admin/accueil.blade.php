@@ -19,7 +19,9 @@
 				<div class="card">
 					<div class="card-body">
 
+
 						<h5 class="card-title">Devis :</h5>
+
 
 						<p class="card-text">{{$devis}}</p>
 					</div>
@@ -29,6 +31,7 @@
 				</div>
 				<div class="card">
 					<div class="card-body">
+
 
 						<h5 class="card-title">Factures :</h5>
 						<p class="card-text">{{$facture}}</p>
@@ -42,6 +45,7 @@
 						<h5 class="card-title">Planning Calendrier</h5>
 						<p class="card-text">Total RDV : </p>
 						<p class="card-text">Demande : </p>
+
 
 					</div>
 					<div class="card-footer">

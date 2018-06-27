@@ -44,8 +44,6 @@ Route::get('/devisvalide/{id}', 'HomeController@devisvalide')->middleware('auth'
 
 
 
-
-
 //Route footer 
 Route::get('/mentionslegales', 'footercontroller@mentionslegales')->name('mentionslegales');
 Route::get('/contact', 'footercontroller@contact')->name('contact');

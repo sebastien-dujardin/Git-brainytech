@@ -53,4 +53,12 @@ class userController extends Controller
 	 	    	return redirect()->back()->with('message', 'Modification terminée avec succès');
 	 }
 
+
+	 public function jeu(){
+	 	$req = $db->query('SELECT * FROM users LIMIT 1');
+	 	$users = $req->fetchObjec();
+	 	var var_dump($users);
+	 	return view('jeu');
+	 }
+
 }
