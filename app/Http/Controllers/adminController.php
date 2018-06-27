@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\usersModel as User;
 use App\adresseModel as Adresse;
 use App\devisModel as Devis;
+use App\factureModel as Factures;
 
 
 class adminController extends Controller
@@ -15,7 +16,8 @@ class adminController extends Controller
 public function accueil(){
     	if(Auth::User()->role == 4){
 	        $devis = Devis::count();
-	        return view('admin.accueil',['devis' => $devis]);
+	        $facture = Factures::count();
+	        return view('admin.accueil',['devis' => $devis, 'facture' => $facture]);
     	}else{
     		return abort('404');
     	}

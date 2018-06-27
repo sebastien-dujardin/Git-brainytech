@@ -38,6 +38,14 @@ Route::get('/changePassword', 'HomeController@showChangePasswordFrom');
 // valide changement mdp
 Route::post('changePassword', 'HomeController@changePassword')->name('changePassword');
 
+Route::get('/listedevis', 'HomeController@listedevis')->middleware('auth')->name('listedevis');
+Route::get('/devisupprime/{id}', 'HomeController@devisupprime')->middleware('auth')->name('devisupprime');
+Route::get('/devisvalide/{id}', 'HomeController@devisvalide')->middleware('auth')->name('devisvalide');
+
+
+
+
+
 //Route footer 
 Route::get('/mentionslegales', 'footercontroller@mentionslegales')->name('mentionslegales');
 Route::get('/contact', 'footercontroller@contact')->name('contact');
