@@ -60,6 +60,7 @@ class HomeController extends Controller
         return redirect()->back()->with("success","Le mot de passe a été changé avec succès !"); 
     }
 
+
 public function listedevis(){ 
             $listedevis = Devis::where('users_id', Auth::user()->id)->paginate(5);
             // $listedevis = Devis::paginate(10);     
@@ -76,4 +77,5 @@ public function listedevis(){
             Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 0, "date_refus" => Carbon::now()]);
             return redirect()->back()->with('message', 'Le devis à été refusé avec succès !');
     }
+
 }

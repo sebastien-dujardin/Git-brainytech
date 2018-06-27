@@ -30,6 +30,7 @@ class userController extends Controller
 		$city = Adresse::where('users_id', Auth::user()->id)->value('infos_ville');
 		return view('modifprofil', compact('coordonnes', 'code', 'city', 'idadresse')  );
 	}
+
 		  // valid modif profil
 	 public function postmodif(Request $donnees) {
 
@@ -51,4 +52,5 @@ class userController extends Controller
 	 		]);
 	 	    	return redirect()->back()->with('message', 'Modification terminée avec succès');
 	 }
+
 }

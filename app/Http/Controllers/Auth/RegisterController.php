@@ -91,6 +91,7 @@ class RegisterController extends Controller
 
         $adresse = Adresse::create([
             'infos_adresse' => $data['infos_adresse'],
+
             'infos_complement_adresse' => $data['infos_complement_adresse'],
             'infos_code_postal' => $data['infos_code_postal'],
             'infos_ville' => $data['infos_ville'],
@@ -109,12 +110,12 @@ class RegisterController extends Controller
            
             ]); 
 
+
         }
 
-        
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
-            'token' => str_random(40)
+            'token'=> str_random(40)
         ]);
         
         
@@ -123,25 +124,28 @@ class RegisterController extends Controller
         return $user;
       
     }
-    
-    public function verifyUser($token){ 
-        $verifyUser = VerifyUser::where('token', $token)->first(); 
-        if(isset($verifyUser)){ 
-            $user = $verifyUser->user; 
-            if(!$user->verified){ 
-                $verifyUser->user->verified = 1; 
-                $verifyUser->user->save(); 
-                $status = "Votre adresse e-mail est vérifiée. Vous pouvez maintenant vous connecter."; 
-            }else{ 
-                $status = "Votre adresse e-mail est déjà vérifiée. Vous pouvez maintenant vous connecter." ; 
-            } 
-        }else{ 
-            return redirect('/login')->with('warning', "Désolé, votre email ne peut pas être identifié."); 
-        }                    
-        return redirect('/login')->with('status', $status); 
-    } 
 
-    protected function registered(Request $request, $user){
+    public function verifyUser($token)
+    {
+        $verifyUser = VerifyUser::where('token', $token)->first();
+        if(isset($verifyUser)){
+            $user = $verifyUser->user;
+            if(!$user->verified){
+                $verifyUser->user->activeuser = 1;
+                $verifyUser->user->save();
+                $status = "Votre adresse e-mail est vérifiée. Vous pouvez maintenant vous connecter.";
+            }else{
+                $status = "Votre adresse e-mail est déjà vérifiée. Vous pouvez maintenant vous connecter." ;
+            }
+        }else{
+            return redirect('/login')->with('warning', "Désolé, votre email ne peut pas être identifié.");
+        }
+
+        return redirect('/login')->with('status', $status);
+    }
+
+    protected function registered(Request $request, $user)
+    {
         $this->guard()->logout();
         return redirect('/login')->with('status', "Nous vous avons envoyé un code d'activation. Vérifiez votre email et cliquez sur le lien pour vérifier.");
     }

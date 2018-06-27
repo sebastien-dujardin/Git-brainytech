@@ -26,17 +26,20 @@
             <h2>
                 Administration des devis
             </h2>
+
             <hr>
         </div>
         <div class="col-12">
             <div class="row">
                 <div class="col-md-1">
+
                     <strong>
                         Date
                     </strong>
                 </div>
                 <div class="col-md-2">
                     <strong>
+
                         Client
                     </strong>
                 </div>
@@ -100,10 +103,12 @@
 
                 {{-- montant en euros du devis --}}
                 <div class="col-md-1">
+
                     {{ $devis->infos_montant_devis }}
                 </div>
                 {{-- 50% ou 100% --}}
                 <div class="col-md-1">
+
                     @php
                     if ($devis['infos_statut_devis'] == 1){
                         $stat = "En cours";
@@ -137,13 +142,16 @@
                             Annuler
                         </a> 
                     @endif
+
                 </div>
             </div>
             <hr class="col-12">
             @endforeach
             {{-- pagination --}}
             <nav aria-label="Page navigation">
+
                 {{ $listedevis->links('vendor.pagination.bootstrap-4') }}
+
             </nav>
         </div>
     </main>
@@ -154,7 +162,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
+
                     Confirmer annulation
+
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -162,7 +172,9 @@
             </div>
             <div class="modal-body">
                 <p>
+
                     Voulez-vous vraiment annuler le devis ?
+
                 </p>
             </div>
             <div class="modal-footer">
@@ -179,7 +191,9 @@
   <script type="text/javascript">
     $('#confirmModale').on('show.bs.modal', function (event) {
         var id = $(event.relatedTarget).data('id');
+
         $(this).find('.modal-body p').html("Voulez-vous vraiment annuler ce devis ?");
+
         $("#confirm").attr("href", "{{URL::to('/')}}/admin/devisupprime/"+id);
     });
 </script>  
