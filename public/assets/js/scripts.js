@@ -24,7 +24,9 @@
 		minDate: 0,
 		maxDate: '+3M +0D',
 		numberOfMonths: 1,
-		showButtonPanel: true
+		showButtonPanel: true,
+		autoSize: true,
+		contrainInput: true
 		};
 	$.datepicker.setDefaults($.datepicker.regional['fr']);
 });

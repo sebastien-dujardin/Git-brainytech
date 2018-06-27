@@ -97,12 +97,11 @@
                         Date expiration
                     </label>
                     <div class="col-md-8">
-                        @php
+                        {{-- @php
                         $dex = date_create($listedevis->infos_date_expiration);
                         $dex = date_format($dex,'d-m-Y');
-                       @endphp
-                       <input type="text" name="datedevis" id="datepick"value="
-                       {{$dex}}" required>
+                       @endphp --}}
+                       <input type="text" name="datedevis" id="datepick" value="{{\Carbon\Carbon::parse($listedevis->infos_date_expiration)->format('d-m-Y')}}" required>
                         @if($errors->has('datedevis'))
                         <span class="invalid-feedback">
                             <strong>
