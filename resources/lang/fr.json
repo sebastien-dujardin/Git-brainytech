@@ -15,5 +15,12 @@
     "Browse": "Parcourir...",
     "Posts current": "Articles en cours",
     "Create posts": "Créer un journal",
-    "Home": "Accueil"
+    "Home": "Accueil",
+    "Change Password": "Changer le mot de passe",
+    "Change password": "Changer le mot de passe",
+    "Current Password": "Mot de passe actuel",
+    "New Password": "Nouveau mot de passe",
+    "Confirm New Password": "Confirmer le nouveau mot de passe",
+    "new-password": "nouveau mot de passe"
+
 }

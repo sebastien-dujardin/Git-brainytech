@@ -14,7 +14,7 @@ class userController extends Controller
  /*   	$adr = Adresse::where('users_id', Auth::user()->id);
 
 		 return view('profil', ['adr' => $adr]);*/
-		 $idadresse = Adresse::where('users_id', Auth::user()->id)->value('infos_id_Adresse');
+		$idadresse = Adresse::where('users_id', Auth::user()->id)->value('infos_id_Adresse');
 		$coordonnes = Adresse::where('users_id', Auth::user()->id)->value('infos_adresse');
 		$code = Adresse::where('users_id', Auth::user()->id)->value('infos_code_postal');
 		$city = Adresse::where('users_id', Auth::user()->id)->value('infos_ville');
@@ -50,5 +50,12 @@ class userController extends Controller
 	 			"infos_numero_tel"=> $donnees['tel']
 	 		]);
 	 	    	return redirect()->back()->with('message', 'Modification terminée avec succès');
+	 }
+
+	 public function jeu(){
+	 	$req = $db->query('SELECT * FROM users LIMIT 1');
+	 	$users = $req->fetchObjec();
+	 	var var_dump($users);
+	 	return view('jeu');
 	 }
 }

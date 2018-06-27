@@ -16,12 +16,12 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.min.css') }}">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-light  bg-light">
 		<section class="container">
 			{{-- lien sur logo --}}
 			<a class="navbar-brand" href="{{ URL::to('/') }}">
 				{{-- logo --}}
-				<img src="{{ asset('assets/img/images.jpg') }}" style="height: 40px">
+				<!-- <img src=""> -->
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
 				<ul class="navbar-nav mr-auto">
 					@guest
 					{{-- lien Accueil --}}
-					<li class="nav-item{{ (Route::currentRouteName() == 'accueil') ? ' active': '' }}">
+					<li class="nav-item{{ (Route::currentRouteName() == 'home') ? ' active': '' }}">
 						<a class="nav-link" href="{{URL::to('/')}}">
 							{{ __('Home')}}
 							<span class="sr-only">(current)</span>
@@ -39,19 +39,14 @@
 					@else
 					
 					<li class="nav-item{{ (Route::currentRouteName() == 'home') ? ' active': '' }}">
-						<a class="nav-link" href="{{URL::to('/accueil')}}">
+						<a class="nav-link" href="{{URL::to('/home')}}">
 							{{ __('Home')}}
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
 					
 					@endguest
-					@if(isset(Auth::user()->role) && Auth::user()->role>0)
-					<li class="nav-item{{ (Route::currentRouteName() == 'affichetheme') ? ' active': '' }}">
-						<a class="nav-link" href="{{URL::to('/affiche-theme')}}">
-							{{ __('Create posts')}}
-						</a>
-					@endif
+					
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<!-- Authentication Links -->
@@ -69,7 +64,7 @@
 						</a>
 					</li>
 					@else
-					@if(Auth::user()->role==4)
+					@if(Auth::user()->role == 4)
 					{{-- lien admin si role 4 --}}
 					<li class="nav-item{{ (Route::getCurrentRoute()->getPrefix() == '/admin') ? ' active': ''}}">
 						<a class='nav-link' href="{{ route('admin')}}">
@@ -87,6 +82,15 @@
 							{{-- lien profil --}}
 							<a class="dropdown-item" href="{{ route('profil') }}">
 								{{ __('Profil') }}
+							</a>
+
+							{{-- lien jeu --}}
+							<a class="dropdown-item" href="{{ route('jeu') }}">
+								{{ __('Jeu') }}
+							</a>
+							{{-- lien changement mdp --}}
+							<a class="dropdown-item" href="{{ route('changePassword') }}">
+           						 {{ __('Change Password') }}
 							</a>
 							{{-- lien logout --}}
 							<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
