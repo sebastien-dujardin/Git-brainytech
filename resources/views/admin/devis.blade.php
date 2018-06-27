@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/styles.min.css')}}">
 <script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.js')}}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery-ui.js')}}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/scripts.js')}}"></script>
 <script>
   $( function() {
     $( "#datepicker" ).datepicker();

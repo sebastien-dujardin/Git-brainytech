@@ -3,7 +3,17 @@
 @section('title', "Administration du site")
 
 @section('contenu')
-
+{{-- instanciation de jquery et jquery-ui pour modif date --}}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/styles.min.css')}}">
+<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.js')}}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/jquery-ui.js')}}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/scripts.js')}}"></script>
+<script>
+  $( function() {
+    $( "#datepick" ).datepicker();
+  } );
+  </script>
 {{--  header  --}}
 <header class="container">
     <div class="row">
@@ -32,14 +42,14 @@
             {{-- formulaire --}}            
             <form method="post" action="{{route('modifdevis') }}">
                 {{ csrf_field() }}
-                <input id="id_mairie" type="hidden" value="{{$devis->id}}" name="id_devis">
+                <input id="id_numero_Devis" type="hidden" value="{{$listedevis->id_numero_Devis}}" name="id_numero_Devis">
                 {{--  description devis --}}
                 <div class="form-group row">
                     <label for="devis" class="col-md-3 col-form-label text-md-right">
                         Description
                     </label>
                     <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" type="text" name="description" id="description" value="{{$devis->description}}" required>
+                        <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" type="text" name="description" id="description" required>{{$listedevis->description}}</textarea>
                         @if($errors->has('description'))
                         <span class="invalid-feedback">
                             <strong>
@@ -55,11 +65,11 @@
                         Quantité
                     </label>
                     <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('qte') ? ' is-invalid' : '' }}" type="text" name="qte" id="qte" value="{{$devis->quantite}}" required>
-                        @if($errors->has('qte'))
+                        <input class="form-control{{ $errors->has('quantite') ? ' is-invalid' : '' }}" type="text" name="quantite" id="quantite" value="{{$listedevis->quantite}}" required>
+                        @if($errors->has('quantite'))
                         <span class="invalid-feedback">
                             <strong>
-                                {{ $errors->first('qte') }}
+                                {{ $errors->first('quantite') }}
                             </strong>
                         </span>
                         @endif
@@ -71,32 +81,38 @@
                         Montant
                     </label>
                     <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('tarif') ? ' is-invalid' : '' }}" type="text" name="tarif" id="tarif" value="{{$devis->infos_montant_devis}}" required>
-                        @if($errors->has('tarif'))
+                        <input class="form-control{{ $errors->has('montant') ? ' is-invalid' : '' }}" type="text" name="montant" id="montant" value="{{$listedevis->infos_montant_devis}}" required>
+                        @if($errors->has('montant'))
                         <span class="invalid-feedback">
                             <strong>
-                                {{ $errors->first('tarif') }}
+                                {{ $errors->first('montant') }}
                             </strong>
                         </span>
                         @endif
                     </div>
                 </div>
-                {{-- champ statut --}}
-                <div class="form-group row">
-                    <label for="statut" class="col-md-3 col-form-label text-md-right">
-                        Statut
+                {{-- date expîration  --}}
+            <div class="form-group row">
+                    <label for="date" class="col-md-3 col-form-label text-md-right">
+                        Date expiration
                     </label>
                     <div class="col-md-8">
-                        <input class="form-control{{ $errors->has('statut') ? ' is-invalid' : '' }}" type="text" name="statut"  value="{{$devis->infos_statut_devis}}" required>
-                        @if($errors->has('statut'))
+                        @php
+                        $dex = date_create($listedevis->infos_date_expiration);
+                        $dex = date_format($dex,'d-m-Y');
+                       @endphp
+                       <input type="text" name="datedevis" id="datepick"value="
+                       {{$dex}}" required>
+                        @if($errors->has('datedevis'))
                         <span class="invalid-feedback">
                             <strong>
-                                {{ $errors->first('statut') }}
+                                {{ $errors->first('datedevis') }}
                             </strong>
                         </span>
                         @endif
                     </div>
-                </div>                
+                </div>
+
                 {{-- bouton modification --}}
                 <div class="form-group row pb-3">
                     <div class="col-md-6 offset-md-3">                    

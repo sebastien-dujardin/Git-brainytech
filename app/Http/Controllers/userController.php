@@ -14,7 +14,7 @@ class userController extends Controller
  /*   	$adr = Adresse::where('users_id', Auth::user()->id);
 
 		 return view('profil', ['adr' => $adr]);*/
-		 $idadresse = Adresse::where('users_id', Auth::user()->id)->value('infos_id_Adresse');
+		$idadresse = Adresse::where('users_id', Auth::user()->id)->value('infos_id_Adresse');
 		$coordonnes = Adresse::where('users_id', Auth::user()->id)->value('infos_adresse');
 		$code = Adresse::where('users_id', Auth::user()->id)->value('infos_code_postal');
 		$city = Adresse::where('users_id', Auth::user()->id)->value('infos_ville');

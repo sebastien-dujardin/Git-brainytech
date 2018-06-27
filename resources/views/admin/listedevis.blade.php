@@ -129,11 +129,9 @@
                         Modifier
                     </a>
                     {{--  suppression  --}}
-                    @if($devis->nbre == 0)
                         <a class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#confirmModale" data-id="{{$devis->id_numero_Devis}}">
-                            Supprimer
+                            Annuler
                         </a>
-                    @endif
                         
                 </div>
             </div>
