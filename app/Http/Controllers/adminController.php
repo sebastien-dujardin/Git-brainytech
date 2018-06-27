@@ -31,5 +31,33 @@ public function accueil(){
 			return abort('404');
 		}
 	}
-    
+ // ajout du devis pour facturation
+
+    public function postdevis(Request $donnees){
+    	if(Auth::user()->role ==4 ){
+    		$validatedData = $donnees->validate([
+				'client' => 'required',
+				'datedevis' => 'required|date',
+	 			'description' => 'required|max:255',
+	 			'qte' => 'required|numeric',
+	 			'tarif' => 'required',
+	 			'reglement' => 'required'
+	 		]);
+	 		$idadresse = Adresse::where('users_id', $donnees['client'])->value('infos_id_Adresse');
+	 		$devis = new Devis();
+			$devis->users_id = $donnees['client'];
+			$devis->Adresse_infos_id_Adresse = $idadresse;
+			$date = date_create($donnees['datedevis']);
+			$date = date_format($date,'Y-m-d H:i:s');
+			$devis->infos_date_expiration = $date;
+			$devis->description = $donnees['description'];
+			$devis->quantite = $donnees['qte'];
+			$devis->infos_montant_devis = $donnees['tarif'];
+			$devis->infos_reglement = $donnees['reglement'];
+			$devis->save();
+			return redirect()->back()->with('message', 'Votre devis a bien été crée avec succès !');
+		}else{
+			return abort('404');
+		}
+    }   
 }

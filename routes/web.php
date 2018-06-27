@@ -49,7 +49,7 @@ Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 // affiche vue changement mdp
 Route::get('/changePassword', 'HomeController@showChangePasswordFrom');
 // valide changement mdp
-Route::post('changePassword', 'HomeController@changePassword')->name('changePassword');
+Route::post('/changePassword', 'HomeController@changePassword')->name('changePassword');
 
 
 // Route Admin
@@ -61,7 +61,3 @@ Route::prefix('admin')->group(function() {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-

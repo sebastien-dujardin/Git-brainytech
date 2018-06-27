@@ -14,7 +14,7 @@ class userController extends Controller
  /*   	$adr = Adresse::where('users_id', Auth::user()->id);
 
 		 return view('profil', ['adr' => $adr]);*/
-		 $idadresse = Adresse::where('users_id', Auth::user()->id)->value('infos_id_Adresse');
+		$idadresse = Adresse::where('users_id', Auth::user()->id)->value('infos_id_Adresse');
 		$coordonnes = Adresse::where('users_id', Auth::user()->id)->value('infos_adresse');
 		$code = Adresse::where('users_id', Auth::user()->id)->value('infos_code_postal');
 		$city = Adresse::where('users_id', Auth::user()->id)->value('infos_ville');
@@ -30,25 +30,24 @@ class userController extends Controller
 		$city = Adresse::where('users_id', Auth::user()->id)->value('infos_ville');
 		return view('modifprofil', compact('coordonnes', 'code', 'city', 'idadresse')  );
 	}
-		  // valid modif profil
-	 public function postmodif(Request $donnees) {
+		// valid modif profil
+	public function postmodif(Request $donnees) {
+		$validatedData = $donnees->validate([
+			'idadress' => 'required',
+			'codepostal' => 'required|max:5',
+			'ville' => 'required|max:255',
+			'adresse' => 'required|max:255',
+			'tel' => 'required|max:10'
+		]);
 
-			$validatedData = $donnees->validate([
-				'idadress' => 'required',
-	 			'codepostal' => 'required|max:5',
-	 			'ville' => 'required|max:255',
-	 			'adresse' => 'required|max:255',
-	 			'tel' => 'required|max:10'
-	 		]);
-
-	 		Adresse::where('infos_id_Adresse', $donnees["idadress"])->update([
-	 			"infos_code_postal"=> $donnees['codepostal'],
-	 			"infos_ville"=> $donnees['ville'],
-	 			"infos_adresse"=> $donnees['adresse']
-	 		]);
-	 		User::where('id', Auth::user()->id)->update([
-	 			"infos_numero_tel"=> $donnees['tel']
-	 		]);
-	 	    	return redirect()->back()->with('message', 'Modification terminée avec succès');
-	 }
+		Adresse::where('infos_id_Adresse', $donnees["idadress"])->update([
+			"infos_code_postal"=> $donnees['codepostal'],
+			"infos_ville"=> $donnees['ville'],
+			"infos_adresse"=> $donnees['adresse']
+		]);
+		User::where('id', Auth::user()->id)->update([
+			"infos_numero_tel"=> $donnees['tel']
+		]);
+		return redirect()->back()->with('message', 'Modification terminée avec succès');
+	}
 }

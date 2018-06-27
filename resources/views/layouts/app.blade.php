@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('assets/js/scripts.js') }}"defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -20,7 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.min.css') }}">
 </head>
 <body>
     <div id="app">
@@ -38,12 +39,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         {{-- lien accueil --}}
-                        <li class="nav-item{{ (Route::currentRouteName() == 'accueil') ? ' active': '' }}">
-						    <a class="nav-link" href="{{URL::to('/')}}">
-							    {{ __('Home')}}
-							    <span class="sr-only">(current)</span>
-						    </a>
-					    </li>
+                        <li class="nav-item{{ (Route::currentRouteName() == 'home') ? ' active': '' }}">
+                            <a class="nav-link" href="{{URL::to('/')}}">
+                                {{ __('Home')}}
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -60,7 +61,14 @@
                                 </a>
                             </li>
                         @else
-
+                        @if(Auth::user()->role == 4)
+                    {{-- lien admin si role 4 --}}
+                    <li class="nav-item{{ (Route::getCurrentRoute()->getPrefix() == '/admin') ? ' active': ''}}">
+                        <a class='nav-link' href="{{ route('admin')}}">
+                            {{ __('Admin') }}
+                        </a>
+                    </li>
+                    @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -71,9 +79,9 @@
                                         {{ __('Profil') }}
                                     </a>
                                     {{--  lien changement password  --}}
-							        <a class="dropdown-item" href="/changePassword">
-           						         {{ __('Change Password') }}
-        					        </a>                                    
+                                    <a class="dropdown-item" href="{{ route('changePassword') }}">
+                                         {{ __('Change Password') }}
+                                    </a>                                    
                                     {{-- lien logout --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

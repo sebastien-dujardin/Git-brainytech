@@ -83,7 +83,7 @@
 						</label>
 					</div>
 					<div class="col-8 mb-2">
-						<input class="form-control{{ $errors->has('ville') ? ' is-invalid' : '' }}" type="text" name="ville" id="codepostal" value="{{$city}}" required>
+						<input class="form-control{{ $errors->has('ville') ? ' is-invalid' : '' }}" type="text" name="ville" id="ville" value="{{$city}}" required>
 						@if($errors->has('titre'))
 						<span class="invalid-feedback">
 							<strong>

@@ -22,7 +22,7 @@
 						<p class="card-text">{{$devis}}</p>
 					</div>
 					<div class="card-footer">
-						 <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/admin/devis/">Administrer</a> - <a href="{{route('postdevis')}}">Ajouter</a></small></p> 
+						 <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/admin/listedevis/">Administrer</a> - <a href="{{URL::to('/')}}/admin/devis/">Ajouter</a></small></p> 
 					</div>
 				</div>
 				<div class="card">

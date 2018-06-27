@@ -8,6 +8,7 @@
 	<!-- Fichier JS -->
 	<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.js') }}"></script>		
 	<script type="text/javascript" src="{{ asset('assets/js/bootstrap.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/scripts.js') }}"></script>
 	<!-- Fichier CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -29,7 +30,7 @@
 				<ul class="navbar-nav mr-auto">
 					@guest
 					{{-- lien Accueil --}}
-					<li class="nav-item{{ (Route::currentRouteName() == 'accueil') ? ' active': '' }}">
+					<li class="nav-item{{ (Route::currentRouteName() == 'home') ? ' active': '' }}">
 						<a class="nav-link" href="{{URL::to('/')}}">
 							{{ __('Home')}}
 							<span class="sr-only">(current)</span>
@@ -38,7 +39,7 @@
 					@else
 					
 					<li class="nav-item{{ (Route::currentRouteName() == 'home') ? ' active': '' }}">
-						<a class="nav-link" href="{{URL::to('/accueil')}}">
+						<a class="nav-link" href="{{URL::to('/home')}}">
 							{{ __('Home')}}
 							<span class="sr-only">(current)</span>
 						</a>
@@ -83,7 +84,7 @@
 								{{ __('Profil') }}
 							</a>
 							{{-- lien changement mdp --}}
-							<a href="/changePassword">
+							<a class="dropdown-item" href="{{ route('changePassword') }}">
            						 {{ __('Change Password') }}
 							</a>
 							{{-- lien logout --}}
@@ -100,5 +101,3 @@
 			</div>
 		</section>
 	</nav>
-
-
