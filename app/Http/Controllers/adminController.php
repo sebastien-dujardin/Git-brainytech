@@ -106,7 +106,16 @@ public function accueil(){
 		}else{
 				return abort('404');
 		}
-
  }
+
+ 	public function devisupprime($id) {
+		if(Auth::user()->role ==4){
+			Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 0]);
+			return redirect()->back()->with('message', 'Le devis à été annulé !');
+		}else{
+			return abort('404');
+		}
+	}
+
 }
 

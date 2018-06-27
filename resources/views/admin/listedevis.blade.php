@@ -125,14 +125,18 @@
                 {{--  action  --}}
                 <div class="col-md-2">
                     {{--  modification  --}}
+
+                    @if ($devis->infos_statut_devis == 1)
                     <a class="btn btn-warning btn-sm" href="{{ URL::to('/')}}/admin/modificationdevis/{{$devis->id_numero_Devis}}">
                         Modifier
                     </a>
+                    
                     {{--  suppression  --}}
+                    
                         <a class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#confirmModale" data-id="{{$devis->id_numero_Devis}}">
                             Annuler
-                        </a>
-                        
+                        </a> 
+                    @endif
                 </div>
             </div>
             <hr class="col-12">
@@ -150,7 +154,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">
-                    Confirmer la suppression
+                    Confirmer annulation
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -158,7 +162,7 @@
             </div>
             <div class="modal-body">
                 <p>
-                    Modal body text goes here.
+                    Voulez-vous vraiment annuler le devis ?
                 </p>
             </div>
             <div class="modal-footer">
@@ -175,7 +179,7 @@
   <script type="text/javascript">
     $('#confirmModale').on('show.bs.modal', function (event) {
         var id = $(event.relatedTarget).data('id');
-        $(this).find('.modal-body p').html("Voulez-vous vraiment supprimer ce devis ?");
+        $(this).find('.modal-body p').html("Voulez-vous vraiment annuler ce devis ?");
         $("#confirm").attr("href", "{{URL::to('/')}}/admin/devisupprime/"+id);
     });
 </script>  

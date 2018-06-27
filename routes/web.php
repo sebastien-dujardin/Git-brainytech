@@ -61,7 +61,7 @@ Route::prefix('admin')->group(function() {
 	Route::get('/listedevis', 'adminController@listedevis')->middleware('auth')->name('listedevis');
 	Route::get('/modificationdevis/{id}', 'adminController@modificationdevis')->middleware('auth')->name('modificationdevis');
 	Route::post('/modifdevis', 'adminController@modifdevis')->middleware('auth')->name('modifdevis');
-	Route::post('/devisupprime', 'adminController@devisupprime')->middleware('auth')->name('devisupprime');
+	Route::get('/devisupprime/{id}', 'adminController@devisupprime')->middleware('auth')->name('devisupprime');
 	
 });
 
