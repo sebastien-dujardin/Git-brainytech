@@ -23,7 +23,7 @@
 						<h5 class="card-title">Devis :</h5>
 
 
-						<p class="card-text">{{$devis}}</p>
+						<p class="card-text"></p>
 					</div>
 					<div class="card-footer">
 						 <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/admin/listedevis/">Administrer</a> - <a href="{{URL::to('/')}}/admin/devis/">Ajouter</a></small></p> 
@@ -34,7 +34,7 @@
 
 
 						<h5 class="card-title">Factures :</h5>
-						<p class="card-text">{{$facture}}</p>
+						<p class="card-text"></p>
 					</div>
 					<div class="card-footer">
 						<p class="card-text"><small class="text-muted"><a href="{{-- {{route('')}} --}}">Administrer</a></small></p>

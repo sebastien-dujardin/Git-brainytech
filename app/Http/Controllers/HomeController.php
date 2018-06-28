@@ -33,7 +33,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (Auth::user()->role == 4) {
+            return view('admin.accueil');
+        }
+        else{
+            return view('home');
+        }
+
+            return view('home');
     }
      // affiche le formulaire changement mdp
     public function showChangePasswordFrom(){
@@ -70,7 +77,20 @@ public function listedevis(){
     }
 
     public function devisvalide($id) {
-            Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 2, "date_validation" => Carbon::now()]);
+            Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 2, "date_validation" => Carbon::now(), "infos_reglement" => "100%"]);
+            $iddevis = $id;
+            // die(var_dump($id));
+            $facture = new Factures();
+            $facture->Devis_id_numero_Devis = $id;
+            $date = Devis::where('id_numero_Devis', $id)->value('date_validation');
+            $facture->infos_date_facture = $date;
+            $montant = Devis::where('id_numero_Devis', $id)->value('infos_montant_devis');
+            $facture->infos_montant_facture = $montant;
+            $statut = Devis::where('id_numero_Devis', $id)->value('infos_statut_devis');
+            $facture->infos_statut_facture = $statut;
+            $adresse = Devis::where('id_numero_Devis', $id)->value('Adresse_infos_id_Adresse');
+            $facture->Adresse_infos_id_Adresse = $adresse;
+            $facture->save();
             return redirect()->back()->with('message', 'Le devis à été validé avec succès !');
     }
 

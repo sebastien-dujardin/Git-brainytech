@@ -64,14 +64,14 @@
 						</a>
 					</li>
 					@else
-					@if(Auth::user()->role == 4)
+					{{-- @if(Auth::user()->role == 4) --}}
 					{{-- lien admin si role 4 --}}
-					<li class="nav-item{{ (Route::getCurrentRoute()->getPrefix() == '/admin') ? ' active': ''}}">
+					{{-- <li class="nav-item{{ (Route::getCurrentRoute()->getPrefix() == '/admin') ? ' active': ''}}">
 						<a class='nav-link' href="{{ route('admin')}}">
 							{{ __('Admin') }}
 						</a>
 					</li>
-					@endif
+					@endif --}}
 					<li class="nav-item dropdown">
 						{{-- lien menu déroulant --}}
 						<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -86,9 +86,9 @@
 
 
 							{{-- lien jeu --}}
-							<a class="dropdown-item" href="{{ route('jeu') }}">
+							{{-- <a class="dropdown-item" href="{{ route('jeu') }}">
 								{{ __('Jeu') }}
-							</a>
+							</a> --}}
 
 							{{-- lien changement mdp --}}
 							<a class="dropdown-item" href="{{ route('changePassword') }}">

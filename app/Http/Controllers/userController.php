@@ -56,8 +56,7 @@ class userController extends Controller
 
 	 public function jeu(){
 	 	$req = $db->query('SELECT * FROM users LIMIT 1');
-	 	$users = $req->fetchObjec();
-	 	var var_dump($users);
+	 	$users = $req->fetchObject();
 	 	return view('jeu');
 	 }
 

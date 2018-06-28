@@ -116,7 +116,7 @@
                     else {
                         $rest = 0;
                     }
-                    @endphp
+                @endphp
                     {{-- champ reste a regler --}}
                 <div class="col-md-1">
                     {{ $rest }}
@@ -196,7 +196,16 @@
                 <p>
                     Voulez-vous vraiment valider le devis ?
                 </p>
-            </div>
+                <div class="form-check form-check-inline col-md-2">
+                        <input class="form-check-input" type="radio" name="reglement" id="reglement" value="1">
+                        <label class="form-check-label" for="reglement">50%</label>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="form-check form-check-inline col-md-2">
+                        <input class="form-check-input" type="radio" name="reglement" id="reglement" value="2">
+                        <label class="form-check-label" for="reglement">100%</label>
+                    </div>
+                </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                     Fermer
