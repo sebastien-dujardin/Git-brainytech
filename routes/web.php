@@ -14,8 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+// Route calendrier
+Route::resource('events', 'EventsController');
+Route::get('/calendrier',function () {
+    return view('calendrier');
+});
 Auth::routes();
+
+
 
 
 //Routes 
