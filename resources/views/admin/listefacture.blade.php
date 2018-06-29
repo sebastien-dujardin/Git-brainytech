@@ -37,18 +37,12 @@
                     <th>Statut</th>
                     <th>Montant facturé</th>
                 </tr>
-                       
-                
             </div>              
             @foreach($listefacture as $facture)
-         
                   <tr>
                     <td>
                          {{$facture->Devis_id_numero_Devis}}
                     </td>
-
-
-
 
                 {{-- date du devis --}}
              

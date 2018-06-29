@@ -13,7 +13,6 @@ use App\factureModel as Factures;
 use Carbon\Carbon as Carbon;
 
 
-
 class HomeController extends Controller
 {
     /**
@@ -71,19 +70,15 @@ class HomeController extends Controller
         $user->save();
         return redirect()->back()->with("success","Le mot de passe a été changé avec succès !"); 
     }
-
-
+// affiche les devis du client
 public function listedevis(){ 
             $listedevis = Devis::where('users_id', Auth::user()->id)->paginate(5);
-            // $listedevis = Devis::paginate(10);     
-            // die(var_dump($listedevis));    
             return view('listedevis', ['listedevis' => $listedevis]);
     }
-
+ // validation du devis et ajout de facture 
     public function devisvalide($id, $regle) {
             Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 2, "date_validation" => Carbon::now(), "infos_reglement" => $regle]);
             $iddevis = $id;
-            // die(var_dump($id));
             $facture = new Factures();
             $facture->Devis_id_numero_Devis = $id;
             $date = Devis::where('id_numero_Devis', $id)->value('date_validation');
@@ -103,12 +98,13 @@ public function listedevis(){
             $facture->save();
             return redirect()->back()->with('message', 'Le devis à été validé avec succès !');
     }
-
+// refus d'un devis 
     public function devisupprime($id) {
             Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 0, "date_refus" => Carbon::now()]);
             return redirect()->back()->with('message2', 'Le devis à été refusé avec succès !');
     }
-
+    
+ // affiche la liste des factures client
     public function listefacture(){ 
             $listefacture = Factures::where('users_id', Auth::user()->id)->paginate(5);
             // $listedevis = Devis::paginate(10);     

@@ -9,11 +9,8 @@ use App\adresseModel as Adresse;
 use App\devisModel as Devis;
 use App\factureModel as Factures;
 
-
-
 class adminController extends Controller
 {
-
 
 //affiche page comptage devis
 public function accueil(){
@@ -21,15 +18,10 @@ public function accueil(){
 	        $devis = Devis::count();
 	        $facture = Factures::count();
 	        return view('admin.accueil',['devis' => $devis, 'facture' => $facture]);
-
-
     	}else{
     		return abort('404');
     	}
     }
-
-
-
 
 //affiche page devis select client
 
@@ -42,7 +34,7 @@ public function accueil(){
 			return abort('404');
 		}
 	}
- // ajout du devis pour facturation
+ // ajout du devis pour client
 
     public function postdevis(Request $donnees){
     	if(Auth::user()->role ==4 ){
@@ -72,7 +64,7 @@ public function accueil(){
 		}
     }   
 
-
+// affiche la liste de  tout les devis clients
     	public function listedevis(){ 
 		if(Auth::user()->role ==4){
 			$listedevis = Devis::get();
@@ -119,7 +111,7 @@ public function accueil(){
 				return abort('404');
 		}
  }
-
+ // annulation d'un devis
  	public function devisupprime($id) {
 		if(Auth::user()->role ==4){
 			Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 0]);
@@ -135,13 +127,11 @@ public function accueil(){
     }
 
 	 public function jeu(){
-
 	 	$req = $db->query('SELECT * FROM users LIMIT 1');
 	 	$users = $req->fetchObjec();
 	 	var_dump($users);
 	 	return view('jeu');
 	 }
-
 }
 
 
