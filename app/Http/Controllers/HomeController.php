@@ -76,8 +76,8 @@ public function listedevis(){
             return view('listedevis', ['listedevis' => $listedevis]);
     }
 
-    public function devisvalide($id) {
-            Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 2, "date_validation" => Carbon::now(), "infos_reglement" => "100%"]);
+    public function devisvalide($id, $regle) {
+            Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 2, "date_validation" => Carbon::now(), "infos_reglement" => $regle]);
             $iddevis = $id;
             // die(var_dump($id));
             $facture = new Factures();
@@ -85,9 +85,15 @@ public function listedevis(){
             $date = Devis::where('id_numero_Devis', $id)->value('date_validation');
             $facture->infos_date_facture = $date;
             $montant = Devis::where('id_numero_Devis', $id)->value('infos_montant_devis');
+            if ($regle == 1) {
+                $montant = $montant/2;
+            }
+            else{
+                $montant = $montant;
+            }
+            $facture->users_id = Auth::user()->id;
             $facture->infos_montant_facture = $montant;
-            $statut = Devis::where('id_numero_Devis', $id)->value('infos_statut_devis');
-            $facture->infos_statut_facture = $statut;
+            $facture->infos_statut_facture = 0;
             $adresse = Devis::where('id_numero_Devis', $id)->value('Adresse_infos_id_Adresse');
             $facture->Adresse_infos_id_Adresse = $adresse;
             $facture->save();
@@ -99,4 +105,10 @@ public function listedevis(){
             return redirect()->back()->with('message', 'Le devis à été refusé avec succès !');
     }
 
+    public function listefacture(){ 
+            $listefacture = Factures::where('users_id', Auth::user()->id)->paginate(5);
+            // $listedevis = Devis::paginate(10);     
+            // die(var_dump($listedevis));    
+            return view('listefacture', ['listefacture' => $listefacture]);
+    }
 }

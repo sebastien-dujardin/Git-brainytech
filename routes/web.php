@@ -41,7 +41,8 @@ Route::post('changePassword', 'HomeController@changePassword')->name('changePass
 
 Route::get('/listedevis', 'HomeController@listedevis')->middleware('auth')->name('listedevis');
 Route::get('/devisupprime/{id}', 'HomeController@devisupprime')->middleware('auth')->name('devisupprime');
-Route::get('/devisvalide/{id}', 'HomeController@devisvalide')->middleware('auth')->name('devisvalide');
+Route::get('/devisvalide/{id}/{regle}', 'HomeController@devisvalide')->middleware('auth')->name('devisvalide');
+Route::get('/listefacture', 'HomeController@listefacture')->middleware('auth')->name('listefacture');
 
 
 

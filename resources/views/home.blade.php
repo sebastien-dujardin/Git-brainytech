@@ -31,7 +31,7 @@
                         {{-- <p class="card-text">{{$facture}}</p> --}}
                     </div>
                     <div class="card-footer">
-                        <p class="card-text"><small class="text-muted"><a href="{{-- {{route('')}} --}}">Administrer</a></small></p>
+                        <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/listefacture/">Administrer</a></small></p>
                     </div>
                 </div>
                 <div class="card">
