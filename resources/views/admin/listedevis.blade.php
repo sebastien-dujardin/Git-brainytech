@@ -30,84 +30,51 @@
             <hr>
         </div>
         <div class="col-12">
-            <div class="row">
-                <div class="col-md-1">
+            <table style="width: 100%">
 
-                    <strong>
-                        Date
-                    </strong>
-                </div>
-                <div class="col-md-2">
-                    <strong>
-
-                        Client
-                    </strong>
-                </div>
-                <div class="col-md-3">
-                    <strong>
-                        Description
-                    </strong>
-                </div>
-                <div class="col-md-1">
-                    <strong>
-                       Quantite
-                   </strong>
-                </div>
-                <div class="col-md-1">
-                    <strong>
-                        Montant
-                    </strong>
-                </div>
-                <div class="col-md-1">
-                    <strong>
-                        Statut
-                    </strong>
-                </div>
-                <div class="col-md-1">
-                    <strong>
-                      Montant Regler
-                  </strong>
-              </div>  
-
-
-            <div class="col-md-2 text-center">
-                <strong>
-                    Action
-                </strong>
-            </div>        
-                <hr class="col-12">
+                    <tr>
+                        <th>Date</th>
+                        <th>Client</th>
+                        <th>Description</th>
+                        <th>Quantite</th>
+                        <th>Montant</th>
+                        <th>Statut</th>
+                        <th>Montant Reglé</th>
+                        <th>Action</th>
+                    </tr>
+                
             </div>              
             @foreach($listedevis as $devis)
-            <div class="row py-1">
+            <tr>
                 {{-- date du devis --}}
-                <div class="col-md-1">
+                <td>
                     {{ \Carbon\Carbon::parse($devis->infos_date_devis)->format('d/m/Y H:i:s') }}
-                </div>
+                </td>
                 {{-- utilisateur --}}
-                <div class="col-md-2">
+                <td>
                     @php
                     $nom = App\usersModel::where('id', $devis['users_id'])->value('name');
                     $prenom = App\usersModel::where('id', $devis['users_id'])->value('infos_prenom');
                     @endphp
                     {{ $nom." ".$prenom }}
-                </div>
+                </td>
                 {{-- description des taches a effectué --}}
-                <div class="col-md-3">
+                <td>
                     {{ $devis->description }}
-                </div>
+                </td>
                 
                 {{-- utilisateur --}}
-                <div class="col-md-1 text-left">
+                <td>
                     {{ $devis->quantite  }}
-                </div>
+                </td>
 
                 {{-- montant en euros du devis --}}
-                <div class="col-md-1">
+                <td>
 
                     {{ $devis->infos_montant_devis }}
-                </div>
+                </td>
                 {{-- 50% ou 100% --}}
-                <div class="col-md-1">
+                <td>
 
                     @php
                     if ($devis['infos_statut_devis'] == 1){
@@ -121,14 +88,14 @@
                     }
                     @endphp
                     {{ $stat }}
-                </div>
+                </td>
                 {{-- 50% ou 100% --}}
-                <div class="col-md-1">
+                <td>
                     {{ $devis->infos_reglement }}
-                </div>
+                </td>
 
                 {{--  action  --}}
-                <div class="col-md-2">
+                <td>
                     {{--  modification  --}}
 
                     @if ($devis->infos_statut_devis == 1)
@@ -143,10 +110,11 @@
                         </a> 
                     @endif
 
-                </div>
+                </td>
             </div>
-            <hr class="col-12">
             @endforeach
+             </table>
+             <br>
             {{-- pagination --}}
             <nav aria-label="Page navigation">
 

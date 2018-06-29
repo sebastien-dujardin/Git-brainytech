@@ -34,10 +34,14 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user()->role == 4) {
-            return view('admin.accueil');
+            $devis = Devis::count();
+            $facture = Factures::count();
+            return view('admin.accueil',['devis' => $devis, 'facture' => $facture]);
         }
         else{
-            return view('home');
+            $devis = Devis::where('users_id', Auth::user()->id)->count();
+            $facture = Factures::where('users_id', Auth::user()->id)->count();
+            return view('home',['devis' => $devis, 'facture' => $facture]);
         }
 
             return view('home');
@@ -102,7 +106,7 @@ public function listedevis(){
 
     public function devisupprime($id) {
             Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 0, "date_refus" => Carbon::now()]);
-            return redirect()->back()->with('message', 'Le devis à été refusé avec succès !');
+            return redirect()->back()->with('message2', 'Le devis à été refusé avec succès !');
     }
 
     public function listefacture(){ 

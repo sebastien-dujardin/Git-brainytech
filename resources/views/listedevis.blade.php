@@ -22,93 +22,53 @@
             <div class="alert alert-success text-center">
                 {{ session('message') }}
             </div>
-            @endif      
+            @endif   
+
+            @if(session('message2'))
+            <div class="alert alert-danger text-center">
+                {{ session('message2') }}
+            </div>
+            @endif    
             <h2>
                Mes devis
             </h2>
             <hr>
         </div>
         <div class="col-12">
-            <div class="row">
-                <div class="col-md-1">
-                    <strong>
-                        Creation
-                    </strong>
-                </div>
-                <div class="col-md-1">
-                    <strong>
-                        Expiration
-                    </strong>
-                </div>
-                <div class="col-md-4">
-                    <strong>
-                        Description
-                    </strong>
-                </div>
-                <div class="col-md-1">
-                    <strong>
-                       Quantite
-                   </strong>
-                </div>
-                <div class="col-md-1">
-                    <strong>
-                        Montant
-                    </strong>
-                </div>
-                <div class="col-md-1">
-                    <strong>
-                      Reste a Regler
-                  </strong>
-              </div>  
-
-
-            <div class="col-md-2 text-center">
-                <strong>
-                    Action
-                </strong>
-            </div>        
-                <hr class="col-12">
-            </div>              
+           <table style="width: 100%">
+                <tr>
+                       <th> Creation</th>
+                       <th>Expiration</th>
+                       <th> Description</th>
+                       <th>Quantite</th>
+                       <th>Montant</th>
+                       <th>Reste a Regler</th>
+                       <th>Action</th>
+                  </tr>            
             @foreach($listedevis as $devis)
-            <div class="row py-1">
+           <tr>
                 {{-- date du devis --}}
-                <div class="col-md-1">
+                <td>
                     {{ \Carbon\Carbon::parse($devis->infos_date_devis)->format('d/m/Y') }}
-                </div>
+                </td>
                 {{-- champ expiration --}}
-                <div class="col-md-1">
+                <td>
                     {{ \Carbon\Carbon::parse($devis->infos_date_expiration)->format('d/m/Y') }}
-                </div>
+                </td>
                 {{-- description des taches a effectué --}}
-                <div class="col-md-4">
+                <td>
                     {{ $devis->description }}
-                </div>
+                </td>
                 
                 {{-- quantite --}}
-                <div class="col-md-1 text-left">
+                <td>
                     {{ $devis->quantite  }}
-                </div>
+                </td>
 
                 {{-- montant en euros du devis --}}
-                <div class="col-md-1">
-                    {{ $devis->infos_montant_devis }}
-                </div>
-                {{-- 50% ou 100% --}}
-               {{--  <div class="col-md-1">
-                    @php
-                    if ($devis['infos_statut_devis'] == 1){
-                        $stat = "En cours";
-                    }
-                    elseif ($devis['infos_statut_devis'] == 2) {
-                        $stat = "Accepté";
-                    }
-                    else {
-                        $stat = "Annulé";
-                    }
-                    @endphp
-                    {{ $stat }}
-                </div> --}}
-                {{-- 50% ou 100% --}}
+                <td>{{ $devis->infos_montant_devis }}</td> 
+                
+                
                 @php
                     if ($devis->infos_reglement == '50%'){
                         $rest = $devis->infos_montant_devis/2;
@@ -121,20 +81,20 @@
                     }
                 @endphp
                     {{-- champ reste a regler --}}
-                <div class="col-md-1">
+                <td>
                     {{ $rest }}
-                </div>
+                </td>
 
                 {{--  action  --}}
-                <div class="col-md-2">
+                <td>
                     {{--  modification  --}}
 
                     @if ($devis->infos_statut_devis == 1)
-                    <a class="btn btn-success btn-sm" href="#" data-toggle="modal" data-target="#confirmModale2" data-id="{{$devis->id_numero_Devis}}">
+                    <a class="spacebtn btn btn-success btn-sm" href="#" data-toggle="modal" data-target="#confirmModale2" data-id="{{$devis->id_numero_Devis}}">
                         Accepter
                     </a>
                     {{--  suppression  --}}
-                    <a class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#confirmModale" data-id="{{$devis->id_numero_Devis}}">
+                    <a class="spacebtn btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#confirmModale" data-id="{{$devis->id_numero_Devis}}">
                         Refusé
                     </a> 
                     @endif
@@ -144,14 +104,14 @@
                     @if ($devis->infos_statut_devis == 0)
                     <p class="text-danger">Refusé le : {{ \Carbon\Carbon::parse($devis->date_refus)->format('d/m/Y') }}</p>
                     @endif
-                </div>
-            </div>
-            <hr class="col-12">
+                </td>
+            </tr>
             @endforeach
             {{-- pagination --}}
              <nav aria-label="Page navigation">
                 {{ $listedevis->links('vendor.pagination.bootstrap-4') }}
             </nav> 
+            </table>
         </div>
     </main>
 </section>
@@ -189,7 +149,7 @@
         <div class="modal-content">
             <div class="modal-header bg-success">
                 <h5 class="modal-title">
-                    Confirmer annulation
+                    Confirmer validation
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -197,7 +157,7 @@
             </div>
             <div class="modal-body">
                 <p>
-                    Voulez-vous vraiment valider le devis ?
+                    Veuillez choisir une modalité de réglement :
                 </p>
                 <div class="form-check form-check-inline col-md-2">
                         <input class="form-check-input reglement" type="radio" name="reglement"  value="1">

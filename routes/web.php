@@ -80,6 +80,7 @@ Route::prefix('admin')->group(function() {
 	Route::get('/modificationdevis/{id}', 'adminController@modificationdevis')->middleware('auth')->name('modificationdevis');
 	Route::post('/modifdevis', 'adminController@modifdevis')->middleware('auth')->name('modifdevis');
 	Route::get('/devisupprime/{id}', 'adminController@devisupprime')->middleware('auth')->name('devisupprime');
+	Route::get('/listefacture', 'adminController@listefacture')->middleware('auth')->name('listefacture');
 	
 
 });

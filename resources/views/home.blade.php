@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Devis :</h5>
-                        {{-- <p class="card-text">{{$devis}}</p> --}}
+                        <p class="card-text">{{$devis}}</p>
                     </div>
                     <div class="card-footer">
                           <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/listedevis/">Administrer</a></small></p>  
@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Factures :</h5>
-                        {{-- <p class="card-text">{{$facture}}</p> --}}
+                        <p class="card-text">{{$facture}}</p>
                     </div>
                     <div class="card-footer">
                         <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/listefacture/">Administrer</a></small></p>

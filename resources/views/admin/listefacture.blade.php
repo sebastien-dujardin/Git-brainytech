@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-12">                        
             <h1>
-                Espace client
+                Espace Administration
             </h1>
         </div>
     </div>
@@ -24,7 +24,7 @@
             </div>
             @endif      
             <h2>
-               Mes Factures
+               Administration des factures clients
             </h2>
 
         </div>
@@ -33,6 +33,7 @@
             <tr>
                     <th>Numero du devis</th>
                     <th>Date</th>
+                    <th>Client</th>
                     <th>Statut</th>
                     <th>Montant facturé</th>
                 </tr>
@@ -53,7 +54,16 @@
              
                   <td>{{ \Carbon\Carbon::parse($facture->infos_date_facture)->format('d/m/Y') }}</td>  
                 
-                {{-- quantite --}}
+
+                  <td>
+                     @php
+                    $nom = App\usersModel::where('id', $facture['users_id'])->value('name');
+                    $prenom = App\usersModel::where('id', $facture['users_id'])->value('infos_prenom');
+                    @endphp
+                    {{ $nom." ".$prenom }}
+                  </td>
+
+                {{-- statut --}}
                 <td>
                      @php
                     if ($facture['infos_statut_facture'] == 0){
@@ -62,8 +72,15 @@
                     else {
                         $stat = "Réglée";
                     }
+                    if ($facture['infos_statut_facture'] == 1){
+                        $attente = "text-success";
+                    }
+                    else {
+                        $attente = "text-danger";
+                    }
+
                     @endphp
-                    {{ $stat }}
+                    <span class="{{$attente}}">{{ $stat }}</span>
                     
                 </td>
 

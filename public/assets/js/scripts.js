@@ -3,6 +3,7 @@
     $('#diventreprise').hide();
     $("#marteau").on('click',function(){
    $("#diventreprise").toggle(); 
+   $(document).screen.orientation.lock('landscape')
   });
 });
 
@@ -31,3 +32,5 @@
 		};
 	$.datepicker.setDefaults($.datepicker.regional['fr']);
 });
+
+

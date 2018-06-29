@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light  bg-light">

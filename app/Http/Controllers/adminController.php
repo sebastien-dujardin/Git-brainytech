@@ -19,7 +19,6 @@ class adminController extends Controller
 public function accueil(){
     	if(Auth::User()->role == 4){
 	        $devis = Devis::count();
-
 	        $facture = Factures::count();
 	        return view('admin.accueil',['devis' => $devis, 'facture' => $facture]);
 
@@ -129,6 +128,11 @@ public function accueil(){
 			return abort('404');
 		}
 	}
+
+	public function listefacture(){ 
+            $listefacture = Factures::where('users_id', Auth::user()->id)->paginate(5);
+            return view('admin.listefacture', ['listefacture' => $listefacture]);
+    }
 
 	 public function jeu(){
 
