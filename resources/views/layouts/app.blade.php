@@ -85,7 +85,7 @@
                                     </a>
                                     {{--  lien changement password  --}}
                                     <a class="dropdown-item" href="{{ route('changePassword') }}">
-                                         {{ __('Change Password') }}
+                                        {{ __('Change Password') }}
                                     </a>                                    
                                     {{-- lien logout --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -108,5 +108,6 @@
             @yield('content')
         </main>
     </div>
+    {!! $calendar_details->script() !!}
 </body>
 </html>
