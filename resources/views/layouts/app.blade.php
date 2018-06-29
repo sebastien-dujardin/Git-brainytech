@@ -12,8 +12,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+
     <script type="text/javascript" src="{{asset('assets/js/jquery-3.3.1.js')}}"> </script>
-    <script type="text/javascript" src="{{ asset('assets/js/scripts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/scripts.js') }}" defer></script>
+
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -23,6 +27,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.min.css') }}">
+    
 </head>
 <body>
     <div id="app">
@@ -78,6 +83,10 @@
                                     {{-- lien profil --}}
                                     <a class="dropdown-item" href="{{ route('profil') }}">
                                         {{ __('Profil') }}
+                                    </a>
+                                    {{-- lien jeu --}}
+                                    <a class="dropdown-item" href="{{ route('jeu') }}">
+                                        {{ __('jeu') }}
                                     </a>
                                     {{--  lien changement password  --}}
                                     <a class="dropdown-item" href="{{ route('changePassword') }}">

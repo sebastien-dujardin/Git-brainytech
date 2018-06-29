@@ -1,0 +1,16 @@
+.container {
+	margin-top: 20px;
+	color: #d9534f;
+}
+.jumbotron {
+	padding-top: 10px;
+	background-color: #2E4272;
+}
+.secondes {
+	margin-top : -20px;
+}
+#paris {
+	transition: 0.25s;
+	visibility: hidden;
+	opacity: 0;
+}

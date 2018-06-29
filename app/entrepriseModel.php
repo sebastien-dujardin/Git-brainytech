@@ -12,7 +12,9 @@ class entrepriseModel extends Model
      * @var array
      */
     protected $fillable = [
+
         'infos_adresse_entreprise','infos_siret','infos_nom_entreprise','users_id'
+
     ];
 
     protected $table = 'infos_entreprise';

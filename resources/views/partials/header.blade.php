@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.min.css') }}">
+	
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light  bg-light">
@@ -84,10 +85,12 @@
 								{{ __('Profil') }}
 							</a>
 
+
 							{{-- lien jeu --}}
 							<a class="dropdown-item" href="{{ route('jeu') }}">
 								{{ __('Jeu') }}
 							</a>
+
 							{{-- lien changement mdp --}}
 							<a class="dropdown-item" href="{{ route('changePassword') }}">
            						 {{ __('Change Password') }}

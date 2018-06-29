@@ -6,6 +6,7 @@
   });
 });
 
+
  jQuery(function($){
 	$.datepicker.regional['fr'] = {
 		closeText: 'Fermer',
@@ -30,8 +31,3 @@
 		};
 	$.datepicker.setDefaults($.datepicker.regional['fr']);
 });
-
-
-
-
-

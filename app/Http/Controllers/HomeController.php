@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\adresseModel as Adresse;
+use App\devisModel as Devis;
+use App\factureModel as Factures;
+use Carbon\Carbon as Carbon;
+
+
 
 class HomeController extends Controller
 {
@@ -52,6 +59,24 @@ class HomeController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
         return redirect()->back()->with("success","Le mot de passe a été changé avec succès !"); 
+    }
+
+
+public function listedevis(){ 
+            $listedevis = Devis::where('users_id', Auth::user()->id)->paginate(5);
+            // $listedevis = Devis::paginate(10);     
+            // die(var_dump($listedevis));    
+            return view('listedevis', ['listedevis' => $listedevis]);
+    }
+
+    public function devisvalide($id) {
+            Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 2, "date_validation" => Carbon::now()]);
+            return redirect()->back()->with('message', 'Le devis à été validé avec succès !');
+    }
+
+    public function devisupprime($id) {
+            Devis::where('id_numero_Devis', $id)->update(["infos_statut_devis" => 0, "date_refus" => Carbon::now()]);
+            return redirect()->back()->with('message', 'Le devis à été refusé avec succès !');
     }
 
 }
