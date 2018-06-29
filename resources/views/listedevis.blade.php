@@ -29,6 +29,8 @@
                 {{ session('message2') }}
             </div>
             @endif    
+                 
+
             <h2>
                Mes devis
             </h2>
@@ -69,10 +71,91 @@
                 <td>{{ $devis->infos_montant_devis }}</td> 
                 
                 
+            <div class="row">
+                <div class="col-md-1">
+                    <strong>
+                        Creation
+                    </strong>
+                </div>
+                <div class="col-md-1">
+                    <strong>
+                        Expiration
+                    </strong>
+                </div>
+                <div class="col-md-4">
+                    <strong>
+                        Description
+                    </strong>
+                </div>
+                <div class="col-md-1">
+                    <strong>
+                       Quantite
+                   </strong>
+                </div>
+                <div class="col-md-1">
+                    <strong>
+                        Montant
+                    </strong>
+                </div>
+                <div class="col-md-1">
+                    <strong>
+                      Reste a Regler
+                  </strong>
+              </div>  
+
+
+            <div class="col-md-2 text-center">
+                <strong>
+                    Action
+                </strong>
+            </div>        
+                <hr class="col-12">
+            </div>              
+            @foreach($listedevis as $devis)
+            <div class="row py-1">
+                {{-- date du devis --}}
+                <div class="col-md-1">
+                    {{ \Carbon\Carbon::parse($devis->infos_date_devis)->format('d/m/Y') }}
+                </div>
+                {{-- champ expiration --}}
+                <div class="col-md-1">
+                    {{ \Carbon\Carbon::parse($devis->infos_date_expiration)->format('d/m/Y') }}
+                </div>
+                {{-- description des taches a effectué --}}
+                <div class="col-md-4">
+                    {{ $devis->description }}
+                </div>
+                
+                {{-- quantite --}}
+                <div class="col-md-1 text-left">
+                    {{ $devis->quantite  }}
+                </div>
+
+                {{-- montant en euros du devis --}}
+                <div class="col-md-1">
+                    {{ $devis->infos_montant_devis }}
+                </div>
+                {{-- 50% ou 100% --}}
+               {{--  <div class="col-md-1">
+                    @php
+                    if ($devis['infos_statut_devis'] == 1){
+                        $stat = "En cours";
+                    }
+                    elseif ($devis['infos_statut_devis'] == 2) {
+                        $stat = "Accepté";
+                    }
+                    else {
+                        $stat = "Annulé";
+                    }
+                    @endphp
+                    {{ $stat }}
+                </div> --}}
+                {{-- 50% ou 100% --}}
                 @php
                     if ($devis->infos_reglement == '50%'){
                         $rest = $devis->infos_montant_devis/2;
                     }
+
                     elseif ($devis->infos_reglement == '100%'){
                         $rest = 0;
                     }
@@ -95,6 +178,22 @@
                     </a>
                     {{--  suppression  --}}
                     <a class="spacebtn btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#confirmModale" data-id="{{$devis->id_numero_Devis}}">
+
+                    {{-- champ reste a regler --}}
+                <div class="col-md-1">
+                    {{ $rest }}
+                </div>
+
+                {{--  action  --}}
+                <div class="col-md-2">
+                    {{--  modification  --}}
+
+                    @if ($devis->infos_statut_devis == 1)
+                    <a class="btn btn-success btn-sm" href="#" data-toggle="modal" data-target="#confirmModale2" data-id="{{$devis->id_numero_Devis}}">
+                        Accepter
+                    </a>
+                    {{--  suppression  --}}
+                    <a class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#confirmModale" data-id="{{$devis->id_numero_Devis}}">
                         Refusé
                     </a> 
                     @endif
@@ -106,6 +205,9 @@
                     @endif
                 </td>
             </tr>
+                </div>
+            </div>
+            <hr class="col-12">
             @endforeach
             {{-- pagination --}}
              <nav aria-label="Page navigation">
@@ -169,6 +271,9 @@
                         <label class="form-check-label" for="reglement">100%</label>
                     </div>
                 </div>
+                    Voulez-vous vraiment valider le devis ?
+                </p>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                     Fermer
@@ -197,4 +302,3 @@
 </script>  
 @endsection
 
-{{--  --}}

@@ -40,7 +40,6 @@ class LoginController extends Controller
     }
 
 
-
     public function autenticated(Request $request, $user){
         if(!$user->verified){
 

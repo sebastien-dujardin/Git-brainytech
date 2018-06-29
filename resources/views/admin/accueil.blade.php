@@ -21,6 +21,7 @@
 
 
 						<h5 class="card-title">Devis :</h5>
+ 						
 						<p class="card-text">{{$devis}}</p>
 
 						<p class="card-text"></p>
@@ -37,7 +38,9 @@
 						<p class="card-text">{{$facture}}</p>
 					</div>
 					<div class="card-footer">
+
 						<p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/admin/listefacture/">Administrer</a></small></p>
+
 					</div>
 				</div>
 				<div class="card">

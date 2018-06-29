@@ -30,6 +30,7 @@
             <hr>
         </div>
         <div class="col-12">
+
             <table style="width: 100%">
 
                     <tr>
@@ -42,7 +43,54 @@
                         <th>Montant Reglé</th>
                         <th>Action</th>
                     </tr>
-                
+
+            <div class="row">
+                <div class="col-md-1">
+
+                    <strong>
+                        Date
+                    </strong>
+                </div>
+                <div class="col-md-2">
+                    <strong>
+
+                        Client
+                    </strong>
+                </div>
+                <div class="col-md-3">
+                    <strong>
+                        Description
+                    </strong>
+                </div>
+                <div class="col-md-1">
+                    <strong>
+                       Quantite
+                   </strong>
+                </div>
+                <div class="col-md-1">
+                    <strong>
+                        Montant
+                    </strong>
+                </div>
+                <div class="col-md-1">
+                    <strong>
+                        Statut
+                    </strong>
+                </div>
+                <div class="col-md-1">
+                    <strong>
+                      Montant Regler
+                  </strong>
+              </div>  
+
+
+            <div class="col-md-2 text-center">
+                <strong>
+                    Action
+                </strong>
+            </div>        
+                <hr class="col-12">
+
             </div>              
             @foreach($listedevis as $devis)
             <tr>
@@ -69,12 +117,15 @@
                 </td>
 
                 {{-- montant en euros du devis --}}
+
                 <td>
 
                     {{ $devis->infos_montant_devis }}
                 </td>
                 {{-- 50% ou 100% --}}
+
                 <td>
+
 
                     @php
                     if ($devis['infos_statut_devis'] == 1){
@@ -110,8 +161,11 @@
                         </a> 
                     @endif
 
+
                 </td>
-            </div>
+
+                </div>
+
             @endforeach
              </table>
              <br>

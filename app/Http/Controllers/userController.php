@@ -53,7 +53,6 @@ class userController extends Controller
 	 	    	return redirect()->back()->with('message', 'Modification terminée avec succès');
 	 }
 
-
 	 public function jeu(){
 	 	$req = $db->query('SELECT * FROM users LIMIT 1');
 	 	$users = $req->fetchObject();
@@ -61,3 +60,4 @@ class userController extends Controller
 	 }
 
 }
+

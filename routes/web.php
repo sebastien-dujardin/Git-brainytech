@@ -24,8 +24,6 @@ Route::get('/calendrier',function () {
 Auth::routes();
 
 
-
-
 //Routes 
 
 //Routes Utilisateur
@@ -50,6 +48,8 @@ Route::get('/listedevis', 'HomeController@listedevis')->middleware('auth')->name
 Route::get('/devisupprime/{id}', 'HomeController@devisupprime')->middleware('auth')->name('devisupprime');
 Route::get('/devisvalide/{id}/{regle}', 'HomeController@devisvalide')->middleware('auth')->name('devisvalide');
 Route::get('/listefacture', 'HomeController@listefacture')->middleware('auth')->name('listefacture');
+Route::get('/devisvalide/{id}', 'HomeController@devisvalide')->middleware('auth')->name('devisvalide');
+
 
 
 
@@ -95,3 +95,12 @@ Route::prefix('admin')->group(function() {
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('admin.accueil');
+
+
+});
+
+Route::get('jeu', 'jeuController@jeu')->middleware('auth')->name('jeu');
+Route::post('ajoutpoint', 'jeuController@jeu')->middleware('auth')->name('jeu_ajout_point');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
