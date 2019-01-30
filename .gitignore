@@ -1,0 +1,14 @@
+
+app/adresseModel.php
+app/adresseModel.php
+app/Console/Kernel.php
+app/entrepriseModel.php
+routes/web.php
+app/Console/Kernel.php
+app/Http/Middleware/EncryptCookies.php
+resources/views/admin/listefacture.blade.php
+resources/views/admin/modificationdevis.blade.php
+resources/views/auth/changepassword.blade.php
+resources/views/admin/modificationdevis.blade.php
+routes/web.php
+resources/views/vendor/pagination/simple-bootstrap-4.blade.php

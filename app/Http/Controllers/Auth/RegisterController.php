@@ -131,7 +131,7 @@ class RegisterController extends Controller
         if(isset($verifyUser)){
             $user = $verifyUser->user;
             if(!$user->verified){
-                $verifyUser->user->activeuser = 1;
+                $verifyUser->user->verified = 1;
                 $verifyUser->user->save();
                 $status = "Votre adresse e-mail est vérifiée. Vous pouvez maintenant vous connecter.";
             }else{

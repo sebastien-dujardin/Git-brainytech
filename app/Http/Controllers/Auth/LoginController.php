@@ -41,13 +41,12 @@ class LoginController extends Controller
 
 
 
-    public function autenticated(Request $request, $user){
-        if(!$user->verified){
-
-
+    public function authenticated(Request $request, $user)
+    {
+        if (!$user->verified) {
             auth()->logout();
-            return back()->with('warning', 'Vous devez vérifier votre compte. Nous avons envoyé un code d\'activation, veuillez vérifier vos e-mails (y compris un éventuel dossier spam).');
+            return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
         }
-        return redirect()->intended($this->redirect>Path());
+        return redirect()->intended($this->redirectPath());
     }
 }
