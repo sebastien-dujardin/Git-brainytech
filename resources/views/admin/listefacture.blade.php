@@ -24,74 +24,83 @@
             </div>
             @endif      
             <h2>
-               Administration des factures clients
-            </h2>
-
-        </div>
-        <div class="col-12">
-            <table style="width: 100%">
-            <tr>
-                    <th>Numero du devis</th>
-                    <th>Date</th>
-                    <th>Client</th>
-                    <th>Statut</th>
-                    <th>Montant facturé</th>
-                </tr>
+             Administration des factures clients
+         </h2>
+    <hr>
+     </div>
+     <div class="col-12">
+        <div class="table-responsive-sm">
+            <table class="table" style="width: 100%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Numero du devis</th>
+                        <th>Date</th>
+                        <th>Client</th>
+                        <th>Statut</th>
+                        <th>Montant facturé</th>
+                    </tr>
+                </thead>      
+                
             </div>              
             @foreach($listefacture as $facture)
-                  <tr>
-                    <td>
-                         {{$facture->Devis_id_numero_Devis}}
-                    </td>
 
-                {{-- date du devis --}}
-             
-                  <td>{{ \Carbon\Carbon::parse($facture->infos_date_facture)->format('d/m/Y') }}</td>  
-                
-
-                  <td>
-                     @php
-                    $nom = App\usersModel::where('id', $facture['users_id'])->value('name');
-                    $prenom = App\usersModel::where('id', $facture['users_id'])->value('infos_prenom');
-                    @endphp
-                    {{ $nom." ".$prenom }}
-                  </td>
-
-                {{-- statut --}}
+            <tr>
                 <td>
-                     @php
-                    if ($facture['infos_statut_facture'] == 0){
-                        $stat = "En cours";
-                    }
-                    else {
-                        $stat = "Réglée";
-                    }
-                    if ($facture['infos_statut_facture'] == 1){
-                        $attente = "text-success";
-                    }
-                    else {
-                        $attente = "text-danger";
-                    }
+                   {{$facture->Devis_id_numero_Devis}}
+               </td>
 
-                    @endphp
-                    <span class="{{$attente}}">{{ $stat }}</span>
-                    
-                </td>
 
-                {{-- montant en euros du devis --}}
-                <td>
-                    {{ $facture->infos_montant_facture }}
-                </td>
-            </tr>
 
-            @endforeach
-            {{-- pagination --}}
-             <nav aria-label="Page navigation">
-                {{ $listefacture->links('vendor.pagination.bootstrap-4') }}
-            </nav> 
-        </table>
+
+               {{-- date du devis --}}
+
+               <td>{{ \Carbon\Carbon::parse($facture->infos_date_facture)->format('d/m/Y') }}</td>  
+
+
+               <td>
+                   @php
+                   $nom = App\usersModel::where('id', $facture['users_id'])->value('name');
+                   $prenom = App\usersModel::where('id', $facture['users_id'])->value('infos_prenom');
+                   @endphp
+                   {{ $nom." ".$prenom }}
+               </td>
+
+               {{-- statut --}}
+               <td>
+                   @php
+                   if ($facture['infos_statut_facture'] == 0){
+                    $stat = "En cours";
+                }
+                else {
+                    $stat = "Réglée";
+                }
+                if ($facture['infos_statut_facture'] == 1){
+                    $attente = "text-success";
+                }
+                else {
+                    $attente = "text-danger";
+                }
+
+                @endphp
+                <span class="{{$attente}}">{{ $stat }}</span>
+
+            </td>
+
+            {{-- montant en euros du devis --}}
+            <td>
+                {{ $facture->infos_montant_facture }}
+            </td>
+        </tr>
+
+        @endforeach
+        {{-- pagination --}}
+        <nav aria-label="Page navigation">
+            {{ $listefacture->links('vendor.pagination.bootstrap-4') }}
+        </nav> 
+    </table>
         </div>
-    </main>
+</div>
+</main>
 </section>
 
 @endsection

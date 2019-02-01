@@ -6,12 +6,6 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/styles.min.css')}}">
 
-<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.js')}}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jquery-ui.js')}}"></script>
-
-
-<script type="text/javascript" src="{{ asset('assets/js/scripts.js')}}"></script>
-
 
 
 <script>
@@ -122,10 +116,10 @@
 				<div class="row">
 					<div class="col-md-5"></div>
 					<div class="col-md-2">
-						<button type="submit" class="btn btn-primary">
+						<button type="submit" class="btn btn-raised btn-primary">
 							valider
 						</button>
-						<a href="#" type="button" class="btn btn-secondary">
+						<a href="#" type="button" class="btn btn-raised btn-secondary">
 							Annuler
 						</a>
 						<div class="col-md-5"></div>
