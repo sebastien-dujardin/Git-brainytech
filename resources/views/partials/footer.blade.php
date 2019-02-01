@@ -19,7 +19,7 @@
 					</li>
 				</ul>			
 				<p class="copy mb-1">
-					&copy 2018 WebForce3
+					&copy 2018 Sebastien Dujardin
 				</p>
 			</div>
 		</div>

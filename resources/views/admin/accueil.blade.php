@@ -31,8 +31,6 @@
 				</div>
 				<div class="card">
 					<div class="card-body">
-
-
 						<h5 class="card-title">Factures :</h5>
 						<p class="card-text">{{$facture}}</p>
 					</div>
@@ -41,12 +39,19 @@
 					</div>
 				</div>
 				<div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Clients</h5>
+                        <p class="card-text">{{$users}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text"><small class="text-muted"><a href="{{-- {{route('')}} --}}">Administrer</a></small></p>
+                    </div>
+                </div>
+				<div class="card">
 					<div class="card-body">
 						<h5 class="card-title">Planning Calendrier</h5>
 						<p class="card-text">Total RDV : </p>
 						<p class="card-text">Demande : </p>
-
-
 					</div>
 					<div class="card-footer">
 						<p class="card-text"><small class="text-muted"><a href="">Administrer</a></small></p>

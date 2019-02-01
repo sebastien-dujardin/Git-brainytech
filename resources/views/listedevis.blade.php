@@ -35,7 +35,8 @@
             <hr>
         </div>
         <div class="col-12">
-           <table style="width: 100%">
+           <table class="table" style="width: 100%">
+               <thead class="thead-dark">     
                 <tr>
                        <th> Creation</th>
                        <th>Expiration</th>
@@ -44,7 +45,9 @@
                        <th>Montant</th>
                        <th>Reste a Regler</th>
                        <th>Action</th>
-                  </tr>            
+                  </tr> 
+                  </thead>  
+                           
             @foreach($listedevis as $devis)
            <tr>
                 {{-- date du devis --}}

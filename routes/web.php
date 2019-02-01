@@ -31,13 +31,18 @@ Auth::routes();
 //Routes Utilisateur
 
 //Inscription bis formulaire 2
-Route::post('/utilisateur', 'RegisterContoller@postadresse')->middleware('auth')->name('modif');
+Route::post('/utilisateur', 'RegisterController@postadresse')->middleware('auth')->name('modif');
 
 //Connexion au profil
-Route::get('/utilisateur', 'userController@profil')->middleware('auth')->name('profil');
+Route::get('profil', 'UserController@profil')->middleware('auth')->name('profil');
+//post avatar
+Route::post('profil', 'UserController@update_avatar');
 //Modification profil
 Route::get('/modifprofil', 'userController@modif')->middleware('auth')->name('modif');
 Route::post('/postmodifprofil', 'userController@postmodif' )->middleware('auth')->name('postmodif');             
+
+Route::get('profil', 'UserController@profil')->middleware('auth')->name('profil');
+Route::post('profil', 'UserController@update_avatar');
 
 // Activation compte par mail
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
@@ -57,24 +62,6 @@ Route::get('/listefacture', 'HomeController@listefacture')->middleware('auth')->
 Route::get('/mentionslegales', 'footercontroller@mentionslegales')->name('mentionslegales');
 Route::get('/contact', 'footercontroller@contact')->name('contact');
 
-
-
-
-// Activation compte par mail
-Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
-// affiche vue changement mdp
-Route::get('/changePassword', 'HomeController@showChangePasswordFrom');
-// valide changement mdp
-Route::post('/changePassword', 'HomeController@changePassword')->name('changePassword');
-
-
-
-// Activation compte par mail
-Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
-// affiche vue changement mdp
-Route::get('/changePassword', 'HomeController@showChangePasswordFrom');
-// valide changement mdp
-Route::post('/changePassword', 'HomeController@changePassword')->name('changePassword');
 
 // Route Admin
 Route::prefix('admin')->group(function() {

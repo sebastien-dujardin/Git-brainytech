@@ -6,18 +6,23 @@
 	<title>@yield('title') - {{ config('app.name') }}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Fichier JS -->
-	<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.js') }}"></script>		
-	<script type="text/javascript" src="{{ asset('assets/js/bootstrap.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/js/scripts.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/jquery-ui.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/jquery.ui.datepicker-fr.js')}}"></script>
+  
+	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>		
+	<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/scripts.js') }}"></script>
+	
 	<!-- Fichier CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/css/fontawesome-all.css">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
+	<link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/styles.css') }}">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light  bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark  bg-primary">
 		<section class="container">
 			{{-- lien sur logo --}}
 			<a class="navbar-brand" href="{{ URL::to('/') }}">
@@ -73,16 +78,15 @@
 						</a>
 					</li>
 					@endif --}}
-					<li class="nav-item dropdown">
-						{{-- lien menu déroulant --}}
-						<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-							{{ Auth::user()->name }} 
-							<span class="caret"></span>
-						</a>
+					<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; color:white; padding-left:50px;">
+                                <img src="{{ asset('uploads/avatars/')}}/{{Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; left:10px; border-radius:55% !important; top:-9px">
+                                </a> 
+                              <span style="color: white"> {{ Auth::user()->name }} {{ Auth::user()->infos_prenom }} </span><span class="caret"></span>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							{{-- lien profil --}}
 							<a class="dropdown-item" href="{{ route('profil') }}">
-								{{ __('Profil') }}
+								<i class="fas fa-user"></i> {{{ __('Profil') }}}
 							</a>
 
 
@@ -90,14 +94,17 @@
 							{{-- <a class="dropdown-item" href="{{ route('jeu') }}">
 								{{ __('Jeu') }}
 							</a> --}}
-
+							<div class="dropdown-divider"></div>
 							{{-- lien changement mdp --}}
 							<a class="dropdown-item" href="{{ route('changePassword') }}">
-           						 {{ __('Change Password') }}
+           						</i>{{ __('Change Password') }}
 							</a>
+							<div class="dropdown-divider"></div>
+
 							{{-- lien logout --}}
 							<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-								{{ __('Déconnexion') }}
+								<i class="fas fa-sign-out-alt"> 
+								</i> {{ __('Déconnexion') }}
 							</a>
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 								@csrf

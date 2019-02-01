@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                  Back Office Brainytech
                 </div>
 
                 <div class="links">

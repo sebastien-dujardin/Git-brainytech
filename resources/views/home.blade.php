@@ -22,7 +22,7 @@
                         <p class="card-text">{{$devis}}</p>
                     </div>
                     <div class="card-footer">
-                          <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/listedevis/">Administrer</a></small></p>  
+                          <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/listedevis/">Voir</a></small></p>  
                     </div>
                 </div>
                 <div class="card">
@@ -31,7 +31,7 @@
                         <p class="card-text">{{$facture}}</p>
                     </div>
                     <div class="card-footer">
-                        <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/listefacture/">Administrer</a></small></p>
+                        <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/listefacture/">Voir</a></small></p>
                     </div>
                 </div>
                 <div class="card">
@@ -41,7 +41,7 @@
                         <p class="card-text">Demande : </p>
                     </div>
                     <div class="card-footer">
-                        <p class="card-text"><small class="text-muted"><a href="">Administrer</a></small></p>
+                        <p class="card-text"><small class="text-muted"><a href="{{URL::to('/')}}/calendrier/">Administrer</a></small></p>
                     </div>
                 </div>
                 <div class="card">

@@ -29,14 +29,15 @@
 
         </div>
         <div class="col-12">
-            <table style="width: 100%">
+            <table class="table" style="width: 100%">
+                 <thead class="thead-dark">
             <tr>
                     <th>Numero du devis</th>
                     <th>Date</th>
                     <th>Statut</th>
                     <th>Montant facturé</th>
                 </tr>
-                       
+                 </thead>        
                 
             </div>              
             @foreach($listefacture as $facture)

@@ -99,7 +99,7 @@
 						<button type="submit" class="btn btn-primary">
 							valider
 						</button>
-						<a href="{{route('profil')}}" type="button" class="btn btn-secondary">
+						<a href="{{route('profil')}}" type="button" class="btn btn-raised btn-secondary">
 							Annuler
 						</a>
 					</div>

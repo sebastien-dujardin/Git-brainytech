@@ -116,10 +116,10 @@
 				<div class="row">
 					<div class="col-md-5"></div>
 					<div class="col-md-2">
-						<button type="submit" class="btn btn-primary">
+						<button type="submit" class="btn btn-raised btn-primary">
 							valider
 						</button>
-						<a href="#" type="button" class="btn btn-secondary">
+						<a href="#" type="button" class="btn btn-raised btn-secondary">
 							Annuler
 						</a>
 						<div class="col-md-5"></div>
